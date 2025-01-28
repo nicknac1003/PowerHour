@@ -30,7 +30,9 @@ public class EnemySpawnController : MonoBehaviour
         if (!waveStarted)
         {
             generateWave();
-        } else {
+        }
+        else
+        {
             if (currentEnemies < maxEnemies && Time.time - lastSpawnTime > spawnInterval)
             {
                 SpawnEnemy();
@@ -40,7 +42,7 @@ public class EnemySpawnController : MonoBehaviour
 
 
     }
-    
+
     public void generateWave()
     {
         waveStarted = true;
@@ -63,7 +65,7 @@ public class EnemySpawnController : MonoBehaviour
             return;
         }
         int spawnPointIndex = Random.Range(0, spawnPoints.Count);
-        
+
         GameObject enemy = Instantiate(enemiesToSpawn[0], spawnPoints[spawnPointIndex].position, Quaternion.identity);
         enemy.SetActive(true);
         enemy.GetComponent<Enemy>().target = player;
@@ -80,7 +82,8 @@ public class EnemySpawnController : MonoBehaviour
 }
 
 [System.Serializable]
-public class EnemyCost {
+public class EnemyCost
+{
     public GameObject enemyPrefab;
     public int cost;
 }

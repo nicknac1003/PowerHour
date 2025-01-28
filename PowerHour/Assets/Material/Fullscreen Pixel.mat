@@ -41,7 +41,7 @@ Material:
     - _NormalThreshold: 1.3
     - _OutlineAttenuation: 4.14
     - _OutlineThreshold: 0.4
-    - _Resolution: 512
+    - _Resolution: 419.4
     m_Colors:
     - _Offset: {r: 0, g: 0, b: 0, a: 0}
     - _OutlineColor: {r: 0.23584905, g: 0.11184176, b: 0.05896225, a: 1}
