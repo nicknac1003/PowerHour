@@ -24,7 +24,7 @@ public class Enemy : MonoBehaviour, IDamageable
     public float speed;
 
     [SerializeField]
-    public int range;
+    public float range;
 
     [SerializeField]
     public string id;
