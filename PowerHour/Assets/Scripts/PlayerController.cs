@@ -6,7 +6,9 @@ using UnityEngine.InputSystem;
 
 public class FPSController : MonoBehaviour
 {
-    [SerializeField] private PlayerInput  playerInput;
+    [SerializeField] private PlayerInput playerInput;
+    [SerializeField] Transform crosshairPos;
+    private Camera mainCamera;
 
     InputAction lookAction;
     InputAction moveAction;
@@ -18,28 +20,29 @@ public class FPSController : MonoBehaviour
     };
 
     [Header("Cursor Parameters")]
-    public  float mouseSensitivityHorizontal;
-    public  float mouseSensitivityVertical;
+    public float mouseSensitivityHorizontal;
+    public float mouseSensitivityVertical;
 
     [Header("Walk Paramters")]
-    public  float walkSpeed; // m/s
-    public  float dashSpeed; // m/s
+    public float walkSpeed; // m/s
+    public float dashSpeed; // m/s
+    public float turnSpeed; // degrees/s
 
     [Header("Physics Parameters")]
-    public  float playerHeight;
-    public  float playerRadius;
+    public float playerHeight;
+    public float playerRadius;
     private float skinnyRadius;
 
-    public  float skinWidth; // tolerance to prevent bounding box from intersecting with walls
+    public float skinWidth; // tolerance to prevent bounding box from intersecting with walls
 
-    public  float velocityDecay; // m/s^2
+    public float velocityDecay; // m/s^2
     private float decayFactor;
 
     private MoveState moveState = MoveState.Walking;
-    public  Vector3   acceleration; // m/s^2
-    public  Vector3   velocity;     // m/s
-    public  float     velocityMagnitude;
-    public  float     accelerationMagnitude;
+    public Vector3 acceleration; // m/s^2
+    public Vector3 velocity;     // m/s
+    public float velocityMagnitude;
+    public float accelerationMagnitude;
 
     void Awake()
     {
@@ -67,22 +70,61 @@ public class FPSController : MonoBehaviour
     {
         switch (moveState)
         {
-            case MoveState.Walking:   return new(walkSpeed,   0, walkSpeed);
-            case MoveState.Dashing:   return new(dashSpeed,   0, dashSpeed);
+            case MoveState.Walking: return new(walkSpeed, 0, walkSpeed);
+            case MoveState.Dashing: return new(dashSpeed, 0, dashSpeed);
             default: return Vector3.zero;
         }
     }
 
+    //TODO: Slow turn speed a little as you get more drunk?
     private void UpdateLook()
     {
-        // shift camera based on cursor position on screen?
+        // Ensure the crosshair is assigned
+        if (crosshairPos == null)
+        {
+            Debug.LogWarning("Crosshair not assigned!");
+            return;
+        }
+
+        // Raycast from the camera through the crosshair to find the floor, then turn Ydir towards that point
+
+        // Get the crosshair's position in screen space
+        Vector3 crosshairScreenPosition = crosshairPos.position;
+
+        // Create a ray from the camera through the crosshair position
+        Ray ray = mainCamera.ScreenPointToRay(crosshairScreenPosition);
+
+        // Perform the raycast to find where the crosshair hits the floor
+        if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
+        {
+            // Get the point where the raycast hits the floor
+            Vector3 floorHitPoint = hit.point;
+
+            // Calculate the direction from the character to the hit point
+            Vector3 directionToHitPoint = floorHitPoint - transform.position;
+            directionToHitPoint.y = 0; // Ignore vertical difference (Y-axis) for 2.5D rotation
+
+            // Calculate the target rotation to face the hit point
+            float targetAngle = Mathf.Atan2(directionToHitPoint.x, directionToHitPoint.z) * Mathf.Rad2Deg;
+            Quaternion targetRotation = Quaternion.Euler(0, targetAngle, 0);
+
+            // Smoothly rotate the character towards the target rotation
+            transform.rotation = Quaternion.RotateTowards(
+                transform.rotation,
+                targetRotation,
+                turnSpeed * Time.deltaTime
+            );
+
+            Debug.DrawRay(floorHitPoint, Vector3.up * 2, Color.green);
+
+        }
     }
 
     private void UpdatePosition()
     {
         (velocity, acceleration) = GetMovementComponents();
 
-        velocityMagnitude     = velocity.magnitude;
+        velocityMagnitude = velocity.magnitude;
         accelerationMagnitude = acceleration.magnitude;
 
         Vector3 actualDisplacement = CollideAndSlide(transform.position, velocity * Time.fixedDeltaTime);
@@ -109,26 +151,26 @@ public class FPSController : MonoBehaviour
 
     private Vector3 CollideAndSlide(Vector3 origin, Vector3 displacement, int bounceCount = 0)
     {
-        if(bounceCount >= 5)
+        if (bounceCount >= 5)
         {
             return Vector3.zero; // prevent infinite recursion - return zero vector
         }
 
         // Shoot capsule cast and see if displacement will cause collision - return displacement if no collision
-        if(Physics.CapsuleCast(origin + Vector3.up * playerRadius, origin + Vector3.up * (playerHeight - playerRadius), skinnyRadius, displacement.normalized, out RaycastHit hit, displacement.magnitude + skinWidth) == false)
+        if (Physics.CapsuleCast(origin + Vector3.up * playerRadius, origin + Vector3.up * (playerHeight - playerRadius), skinnyRadius, displacement.normalized, out RaycastHit hit, displacement.magnitude + skinWidth) == false)
         {
             Debug.DrawLine(origin, origin + displacement, Color.blue, Time.fixedDeltaTime);
             return displacement;
         }
 
         // Find new origin point (where the collision occurred)
-        Vector3 reducedDisplacement  = displacement.normalized * (hit.distance - skinWidth);
+        Vector3 reducedDisplacement = displacement.normalized * (hit.distance - skinWidth);
 
         // Calculate leftover displacement after collision
         Vector3 leftoverDisplacement = displacement - reducedDisplacement;
 
         // Ensure there is enough room for collision check to work, otherwise set reducedDisplacement to zero
-        if(reducedDisplacement.magnitude <= skinWidth)
+        if (reducedDisplacement.magnitude <= skinWidth)
         {
             reducedDisplacement = Vector3.zero;
         }
