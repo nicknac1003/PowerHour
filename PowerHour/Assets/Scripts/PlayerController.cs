@@ -10,8 +10,6 @@ public class FPSController : MonoBehaviour
 
     InputAction lookAction;
     InputAction moveAction;
-    InputAction jumpAction;
-    InputAction sprintAction;
 
     public enum MoveState
     {
@@ -47,8 +45,6 @@ public class FPSController : MonoBehaviour
     {
         lookAction   = playerInput.actions.FindAction("Look");
         moveAction   = playerInput.actions.FindAction("Move");
-        jumpAction   = playerInput.actions.FindAction("Jump");
-        sprintAction = playerInput.actions.FindAction("Sprint");
 
         skinnyRadius = playerRadius - skinWidth;
 
@@ -56,8 +52,7 @@ public class FPSController : MonoBehaviour
     }
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible   = false;
+        Cursor.visible   = true; // make false and replace with custom cursor
     }
     void Update()
     {
