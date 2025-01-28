@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 
 public class FPSController : MonoBehaviour
 {
-    [SerializeField] private PlayerInput  playerInput;
+    [SerializeField] private PlayerInput playerInput;
 
     InputAction lookAction;
     InputAction moveAction;
@@ -20,34 +20,34 @@ public class FPSController : MonoBehaviour
     };
 
     [Header("Cursor Parameters")]
-    public  float mouseSensitivityHorizontal;
-    public  float mouseSensitivityVertical;
+    public float mouseSensitivityHorizontal;
+    public float mouseSensitivityVertical;
 
     [Header("Walk Paramters")]
-    public  float walkSpeed; // m/s
-    public  float dashSpeed; // m/s
+    public float walkSpeed; // m/s
+    public float dashSpeed; // m/s
 
     [Header("Physics Parameters")]
-    public  float playerHeight;
-    public  float playerRadius;
+    public float playerHeight;
+    public float playerRadius;
     private float skinnyRadius;
 
-    public  float skinWidth; // tolerance to prevent bounding box from intersecting with walls
+    public float skinWidth; // tolerance to prevent bounding box from intersecting with walls
 
-    public  float velocityDecay; // m/s^2
+    public float velocityDecay; // m/s^2
     private float decayFactor;
 
     private MoveState moveState = MoveState.Walking;
-    public  Vector3   acceleration; // m/s^2
-    public  Vector3   velocity;     // m/s
-    public  float     velocityMagnitude;
-    public  float     accelerationMagnitude;
+    public Vector3 acceleration; // m/s^2
+    public Vector3 velocity;     // m/s
+    public float velocityMagnitude;
+    public float accelerationMagnitude;
 
     void Awake()
     {
-        lookAction   = playerInput.actions.FindAction("Look");
-        moveAction   = playerInput.actions.FindAction("Move");
-        jumpAction   = playerInput.actions.FindAction("Jump");
+        lookAction = playerInput.actions.FindAction("Look");
+        moveAction = playerInput.actions.FindAction("Move");
+        jumpAction = playerInput.actions.FindAction("Jump");
         sprintAction = playerInput.actions.FindAction("Sprint");
 
         skinnyRadius = playerRadius - skinWidth;
@@ -56,8 +56,9 @@ public class FPSController : MonoBehaviour
     }
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible   = false;
+        // Don't lock for this game!
+        //Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
     void Update()
     {
@@ -72,8 +73,8 @@ public class FPSController : MonoBehaviour
     {
         switch (moveState)
         {
-            case MoveState.Walking:   return new(walkSpeed,   0, walkSpeed);
-            case MoveState.Dashing:   return new(dashSpeed,   0, dashSpeed);
+            case MoveState.Walking: return new(walkSpeed, 0, walkSpeed);
+            case MoveState.Dashing: return new(dashSpeed, 0, dashSpeed);
             default: return Vector3.zero;
         }
     }
@@ -87,7 +88,7 @@ public class FPSController : MonoBehaviour
     {
         (velocity, acceleration) = GetMovementComponents();
 
-        velocityMagnitude     = velocity.magnitude;
+        velocityMagnitude = velocity.magnitude;
         accelerationMagnitude = acceleration.magnitude;
 
         Vector3 actualDisplacement = CollideAndSlide(transform.position, velocity * Time.fixedDeltaTime);
@@ -114,26 +115,26 @@ public class FPSController : MonoBehaviour
 
     private Vector3 CollideAndSlide(Vector3 origin, Vector3 displacement, int bounceCount = 0)
     {
-        if(bounceCount >= 5)
+        if (bounceCount >= 5)
         {
             return Vector3.zero; // prevent infinite recursion - return zero vector
         }
 
         // Shoot capsule cast and see if displacement will cause collision - return displacement if no collision
-        if(Physics.CapsuleCast(origin + Vector3.up * playerRadius, origin + Vector3.up * (playerHeight - playerRadius), skinnyRadius, displacement.normalized, out RaycastHit hit, displacement.magnitude + skinWidth) == false)
+        if (Physics.CapsuleCast(origin + Vector3.up * playerRadius, origin + Vector3.up * (playerHeight - playerRadius), skinnyRadius, displacement.normalized, out RaycastHit hit, displacement.magnitude + skinWidth) == false)
         {
             Debug.DrawLine(origin, origin + displacement, Color.blue, Time.fixedDeltaTime);
             return displacement;
         }
 
         // Find new origin point (where the collision occurred)
-        Vector3 reducedDisplacement  = displacement.normalized * (hit.distance - skinWidth);
+        Vector3 reducedDisplacement = displacement.normalized * (hit.distance - skinWidth);
 
         // Calculate leftover displacement after collision
         Vector3 leftoverDisplacement = displacement - reducedDisplacement;
 
         // Ensure there is enough room for collision check to work, otherwise set reducedDisplacement to zero
-        if(reducedDisplacement.magnitude <= skinWidth)
+        if (reducedDisplacement.magnitude <= skinWidth)
         {
             reducedDisplacement = Vector3.zero;
         }
