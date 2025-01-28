@@ -7,6 +7,8 @@ using UnityEngine.InputSystem;
 public class FPSController : MonoBehaviour
 {
     [SerializeField] private PlayerInput playerInput;
+    [SerializeField] Transform crosshairPos;
+    private Camera mainCamera;
 
     InputAction lookAction;
     InputAction moveAction;
@@ -26,6 +28,7 @@ public class FPSController : MonoBehaviour
     [Header("Walk Paramters")]
     public float walkSpeed; // m/s
     public float dashSpeed; // m/s
+    public float turnSpeed; // degrees/s
 
     [Header("Physics Parameters")]
     public float playerHeight;
@@ -59,6 +62,7 @@ public class FPSController : MonoBehaviour
         // Don't lock for this game!
         //Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        mainCamera = Camera.main;
     }
     void Update()
     {
@@ -79,9 +83,48 @@ public class FPSController : MonoBehaviour
         }
     }
 
+    //TODO: Slow turn speed a little as you get more drunk?
     private void UpdateLook()
     {
-        // shift camera based on cursor position on screen?
+        // Ensure the crosshair is assigned
+        if (crosshairPos == null)
+        {
+            Debug.LogWarning("Crosshair not assigned!");
+            return;
+        }
+
+        // Raycast from the camera through the crosshair to find the floor, then turn Ydir towards that point
+
+        // Get the crosshair's position in screen space
+        Vector3 crosshairScreenPosition = crosshairPos.position;
+
+        // Create a ray from the camera through the crosshair position
+        Ray ray = mainCamera.ScreenPointToRay(crosshairScreenPosition);
+
+        // Perform the raycast to find where the crosshair hits the floor
+        if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
+        {
+            // Get the point where the raycast hits the floor
+            Vector3 floorHitPoint = hit.point;
+
+            // Calculate the direction from the character to the hit point
+            Vector3 directionToHitPoint = floorHitPoint - transform.position;
+            directionToHitPoint.y = 0; // Ignore vertical difference (Y-axis) for 2.5D rotation
+
+            // Calculate the target rotation to face the hit point
+            float targetAngle = Mathf.Atan2(directionToHitPoint.x, directionToHitPoint.z) * Mathf.Rad2Deg;
+            Quaternion targetRotation = Quaternion.Euler(0, targetAngle, 0);
+
+            // Smoothly rotate the character towards the target rotation
+            transform.rotation = Quaternion.RotateTowards(
+                transform.rotation,
+                targetRotation,
+                turnSpeed * Time.deltaTime
+            );
+
+            Debug.DrawRay(floorHitPoint, Vector3.up * 2, Color.green);
+
+        }
     }
 
     private void UpdatePosition()
