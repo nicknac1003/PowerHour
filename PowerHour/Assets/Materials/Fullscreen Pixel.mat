@@ -37,13 +37,16 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _DepthThreshold: 0.4
-    - _NormalThreshold: 1.3
+    - _DepthThreshold: 0.2
+    - _InlineBrightness: -0.3
+    - _NormalThreshold: 1
     - _OutlineAttenuation: 4.14
+    - _OutlineDarkness: -0.3
     - _OutlineThreshold: 0.4
-    - _Resolution: 512
+    - _Resolution: 640
     m_Colors:
-    - _Offset: {r: 0, g: 0, b: 0, a: 0}
-    - _OutlineColor: {r: 0.23584905, g: 0.11184176, b: 0.05896225, a: 1}
+    - _InlineColor: {r: 1, g: 0, b: 0, a: 1}
+    - _Offset: {r: 9.93, g: 0, b: 0, a: 0}
+    - _OutlineColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
