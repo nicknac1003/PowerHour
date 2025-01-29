@@ -8,7 +8,6 @@ public class FPSController : MonoBehaviour
 {
     [SerializeField] private PlayerInput playerInput;
     [SerializeField] Transform crosshairPos;
-    private Camera mainCamera;
 
     InputAction lookAction;
     InputAction moveAction;
@@ -46,8 +45,8 @@ public class FPSController : MonoBehaviour
 
     void Awake()
     {
-        lookAction   = playerInput.actions.FindAction("Look");
-        moveAction   = playerInput.actions.FindAction("Move");
+        lookAction = playerInput.actions.FindAction("Look");
+        moveAction = playerInput.actions.FindAction("Move");
 
         skinnyRadius = playerRadius - skinWidth;
 
@@ -55,7 +54,7 @@ public class FPSController : MonoBehaviour
     }
     void Start()
     {
-        Cursor.visible   = true; // make false and replace with custom cursor
+        Cursor.visible = true; // make false and replace with custom cursor
     }
     void Update()
     {
@@ -79,6 +78,24 @@ public class FPSController : MonoBehaviour
     //TODO: Slow turn speed a little as you get more drunk?
     private void UpdateLook()
     {
+
+        // 8 Directional movements based on wasd
+        (velocity, acceleration) = GetMovementComponents();
+
+        // point y rotation towards velocity
+        if (velocity != Vector3.zero)
+        {
+            float targetAngle = Mathf.Atan2(velocity.x, velocity.z) * Mathf.Rad2Deg;
+            Quaternion targetRotation = Quaternion.Euler(0, targetAngle, 0);
+
+            transform.rotation = targetRotation;
+        }
+
+    }
+
+    // Get the transform of the mouse location in the world (on the floor) for attacks.
+    private void GetMouseLocation()
+    {
         // Ensure the crosshair is assigned
         if (crosshairPos == null)
         {
@@ -92,7 +109,7 @@ public class FPSController : MonoBehaviour
         Vector3 crosshairScreenPosition = crosshairPos.position;
 
         // Create a ray from the camera through the crosshair position
-        Ray ray = mainCamera.ScreenPointToRay(crosshairScreenPosition);
+        Ray ray = Camera.main.ScreenPointToRay(crosshairScreenPosition);
 
         // Perform the raycast to find where the crosshair hits the floor
         if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
@@ -109,15 +126,14 @@ public class FPSController : MonoBehaviour
             Quaternion targetRotation = Quaternion.Euler(0, targetAngle, 0);
 
             // Smoothly rotate the character towards the target rotation
-            transform.rotation = Quaternion.RotateTowards(
+            /*transform.rotation = Quaternion.RotateTowards(
                 transform.rotation,
                 targetRotation,
                 turnSpeed * Time.deltaTime
-            );
-
-            Debug.DrawRay(floorHitPoint, Vector3.up * 2, Color.green);
-
+            );*/
+            // use above code for attacks ^, movement will just be wasd
         }
+
     }
 
     private void UpdatePosition()
