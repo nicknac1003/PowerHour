@@ -94,13 +94,13 @@ public class FPSController : MonoBehaviour
     }
 
     // Get the transform of the mouse location in the world (on the floor) for attacks.
-    private void GetMouseLocation()
+    public Quaternion GetMouseLocation()
     {
         // Ensure the crosshair is assigned
         if (crosshairPos == null)
         {
             Debug.LogWarning("Crosshair not assigned!");
-            return;
+            return Quaternion.identity;
         }
 
         // Raycast from the camera through the crosshair to find the floor, then turn Ydir towards that point
@@ -132,7 +132,12 @@ public class FPSController : MonoBehaviour
                 turnSpeed * Time.deltaTime
             );*/
             // use above code for attacks ^, movement will just be wasd
+
+            return targetRotation;
         }
+
+        Debug.Log("Crosshair not on screen, error on GetMouseLocation()");
+        return Quaternion.identity;
 
     }
 
