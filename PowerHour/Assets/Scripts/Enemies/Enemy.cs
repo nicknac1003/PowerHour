@@ -1,13 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-
-public interface IDamageable
-{
-    float maxHealth { get; set; }
-    float currentHealth { get; set; }
-    void TakeDamage(int damage);
-}
-
 // This is a class that represents an enemy in the game
 public class Enemy : MonoBehaviour, IDamageable
 {
