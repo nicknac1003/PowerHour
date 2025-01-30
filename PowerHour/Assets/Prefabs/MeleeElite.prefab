@@ -128,7 +128,6 @@ MonoBehaviour:
   speed: 4
   range: 2.02
   id: MeleeElite
-  model: {fileID: 1465039674744359416}
   target: {fileID: 0}
   hitDelay: 0.1
   attackDelay: 1

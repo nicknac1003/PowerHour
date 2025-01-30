@@ -1,20 +1,21 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public interface IDamageable
 {
-    int maxHealth { get; set; }
-    int currentHealth { get; set; }
+    float maxHealth { get; set; }
+    float currentHealth { get; set; }
     void TakeDamage(int damage);
 }
 
 // This is a class that represents an enemy in the game
 public class Enemy : MonoBehaviour, IDamageable
 {
-    private int _currentHealth;
-    private int _maxHealth;
+    private float _currentHealth;
+    private float _maxHealth;
 
-    public int currentHealth { get { return _currentHealth; } set { _currentHealth = value; } }
-    public int maxHealth { get { return _maxHealth; } set { _maxHealth = value; } }
+    public float currentHealth { get { return _currentHealth; } set { _currentHealth = value; } }
+    public float maxHealth { get { return _maxHealth; } set { _maxHealth = value; } }
 
 
     [SerializeField]
@@ -42,6 +43,9 @@ public class Enemy : MonoBehaviour, IDamageable
     public float attackDelay;
 
     public bool isHit = false;
+
+    public GameObject healthBarUI;
+    public Slider healthBar;
     
     public virtual void attack()
     {
@@ -83,13 +87,26 @@ public class Enemy : MonoBehaviour, IDamageable
 
     public virtual void Init()
     {
-        return;
+        healthBar.value = CalculateHealth();
     }
     public virtual void Update()
     {
+        healthBar.value = CalculateHealth();
+        if (currentHealth < maxHealth)
+        {
+            healthBarUI.SetActive(true);
+        } else
+        {
+            healthBarUI.SetActive(false);
+        }
         move();
+
     }
 
+    public float CalculateHealth()
+    {
+        return currentHealth / maxHealth;
+    }
 
     public void TakeDamage(int damage)
     {
