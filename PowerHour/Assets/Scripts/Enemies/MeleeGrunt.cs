@@ -13,10 +13,10 @@ public class MeleeGrunt : Enemy
     {
         // This is where the enemy would attack the player
         // For now, we will just print a message
-        if (target != null && model != null)
+        if (target != null)
         {
             //if the player is within range, attack the player
-            float distanceToPlayer = Vector3.Distance(model.transform.position, target.transform.position);
+            float distanceToPlayer = Vector3.Distance(this.transform.position, target.transform.position);
             if (distanceToPlayer <= range)
             {
                 Debug.Log("MeleeGrunt is attacking the player");

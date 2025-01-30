@@ -1,20 +1,13 @@
 using UnityEngine;
-
-public interface IDamageable
-{
-    int maxHealth { get; set; }
-    int currentHealth { get; set; }
-    void TakeDamage(int damage);
-}
-
+using UnityEngine.UI;
 // This is a class that represents an enemy in the game
 public class Enemy : MonoBehaviour, IDamageable
 {
-    private int _currentHealth;
-    private int _maxHealth;
+    private float _currentHealth;
+    private float _maxHealth;
 
-    public int currentHealth { get { return _currentHealth; } set { _currentHealth = value; } }
-    public int maxHealth { get { return _maxHealth; } set { _maxHealth = value; } }
+    public float currentHealth { get { return _currentHealth; } set { _currentHealth = value; } }
+    public float maxHealth { get { return _maxHealth; } set { _maxHealth = value; } }
 
 
     [SerializeField]
@@ -30,9 +23,6 @@ public class Enemy : MonoBehaviour, IDamageable
     public string id;
 
     [SerializeField]
-    public GameObject model;
-
-    [SerializeField]
     public GameObject target;
 
     protected float lastHitTime;
@@ -45,6 +35,9 @@ public class Enemy : MonoBehaviour, IDamageable
     public float attackDelay;
 
     public bool isHit = false;
+
+    public GameObject healthBarUI;
+    public Slider healthBar;
     
     public virtual void attack()
     {
@@ -52,17 +45,17 @@ public class Enemy : MonoBehaviour, IDamageable
     }
     public virtual void move()
     {
-        float distanceToPlayer = Vector3.Distance(model.transform.position, target.transform.position);
+        float distanceToPlayer = Vector3.Distance(this.transform.position, target.transform.position);
         if (distanceToPlayer > range)
         {
             if (!isHit)
             {
                 //look at player without looking up or down
-                Vector3 direction = target.transform.position - model.transform.position;
+                Vector3 direction = target.transform.position - this.transform.position;
                 direction.y = 0;
-                model.transform.rotation = Quaternion.LookRotation(direction);
+                this.transform.rotation = Quaternion.LookRotation(direction);
 
-                model.transform.position = Vector3.MoveTowards(model.transform.position, model.transform.position + transform.forward, speed* Time.deltaTime);
+                this.transform.position = Vector3.MoveTowards(this.transform.position, this.transform.position + transform.forward, speed* Time.deltaTime);
             } 
             else if (Time.time > lastHitTime + hitDelay)
             {
@@ -86,13 +79,34 @@ public class Enemy : MonoBehaviour, IDamageable
 
     public virtual void Init()
     {
+        if (healthBarUI != null)
+        {
+            healthBar.value = CalculateHealth();
+        }
         return;
     }
     public virtual void Update()
     {
+        if (healthBarUI != null && healthBar != null)
+        {
+            healthBar.value = CalculateHealth();
+            if (currentHealth < maxHealth)
+            {
+                healthBarUI.SetActive(true);
+            } else
+            {
+                healthBarUI.SetActive(false);
+            }
+        }
+
         move();
+
     }
 
+    public float CalculateHealth()
+    {
+        return currentHealth / maxHealth;
+    }
 
     public void TakeDamage(int damage)
     {
