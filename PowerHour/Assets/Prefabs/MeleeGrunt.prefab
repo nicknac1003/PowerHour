@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6789706210213852232}
   - component: {fileID: 2112477990192356023}
   - component: {fileID: 4078380250976411477}
+  - component: {fileID: 5489358437277079532}
   m_Layer: 0
   m_Name: MeleeGrunt
   m_TagString: Untagged
@@ -125,10 +126,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseSpeed: 4
   speed: 4
-  range: 1
+  range: 1.75
   id: MeleeGrunt
   model: {fileID: 6973897506473533484}
   target: {fileID: 0}
   hitDelay: 0.1
   attackDelay: 1
   isHit: 0
+--- !u!54 &5489358437277079532
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6973897506473533484}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

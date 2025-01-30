@@ -30,9 +30,6 @@ public class Enemy : MonoBehaviour, IDamageable
     public string id;
 
     [SerializeField]
-    public GameObject model;
-
-    [SerializeField]
     public GameObject target;
 
     protected float lastHitTime;
@@ -52,17 +49,17 @@ public class Enemy : MonoBehaviour, IDamageable
     }
     public virtual void move()
     {
-        float distanceToPlayer = Vector3.Distance(model.transform.position, target.transform.position);
+        float distanceToPlayer = Vector3.Distance(this.transform.position, target.transform.position);
         if (distanceToPlayer > range)
         {
             if (!isHit)
             {
                 //look at player without looking up or down
-                Vector3 direction = target.transform.position - model.transform.position;
+                Vector3 direction = target.transform.position - this.transform.position;
                 direction.y = 0;
-                model.transform.rotation = Quaternion.LookRotation(direction);
+                this.transform.rotation = Quaternion.LookRotation(direction);
 
-                model.transform.position = Vector3.MoveTowards(model.transform.position, model.transform.position + transform.forward, speed* Time.deltaTime);
+                this.transform.position = Vector3.MoveTowards(this.transform.position, this.transform.position + transform.forward, speed* Time.deltaTime);
             } 
             else if (Time.time > lastHitTime + hitDelay)
             {
