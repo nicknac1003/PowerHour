@@ -79,18 +79,26 @@ public class Enemy : MonoBehaviour, IDamageable
 
     public virtual void Init()
     {
-        healthBar.value = CalculateHealth();
+        if (healthBarUI != null)
+        {
+            healthBar.value = CalculateHealth();
+        }
+        return;
     }
     public virtual void Update()
     {
-        healthBar.value = CalculateHealth();
-        if (currentHealth < maxHealth)
+        if (healthBarUI != null && healthBar != null)
         {
-            healthBarUI.SetActive(true);
-        } else
-        {
-            healthBarUI.SetActive(false);
+            healthBar.value = CalculateHealth();
+            if (currentHealth < maxHealth)
+            {
+                healthBarUI.SetActive(true);
+            } else
+            {
+                healthBarUI.SetActive(false);
+            }
         }
+
         move();
 
     }
