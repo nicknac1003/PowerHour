@@ -30,6 +30,7 @@ public class PlayerAnimationController : MonoBehaviour
         // on left click, punch
         if (Input.GetMouseButtonDown(0) && Time.time >= nextPunchTime)
         {
+            Debug.Log("Punch");
             animator.SetTrigger("Punch");
             playerController.currentlyPunching = true;
             animator.SetFloat("AnimSpeed", punchAnimSpeed); //here for debugging, remove later
@@ -44,8 +45,10 @@ public class PlayerAnimationController : MonoBehaviour
     }
 
     // For when all punch animations are done, and we are idle/running
+    // Currently bugged. You can start RPunch animation before cd applies if you hold down movement keys while spamming punch
     void PunchEnd()
     {
+        Debug.Log("PunchEnd");
         nextPunchTime = Time.time + punchCooldown; //reset punch cd
         playerController.currentlyPunching = false;
     }
