@@ -918,7 +918,7 @@
     "m_ShaderOutputName": "Edge2",
     "m_StageCapability": 3,
     "m_Value": {
-        "x": 0.0010000000474974514,
+        "x": 0.004999999888241291,
         "y": 1.0,
         "z": 1.0,
         "w": 1.0

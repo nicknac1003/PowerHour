@@ -38,11 +38,11 @@ Material:
     m_Ints: []
     m_Floats:
     - _DepthThreshold: 0.2
-    - _HighlightBrightness: 0
+    - _HighlightBrightness: 0.3
     - _InlineBrightness: -0.3
     - _NormalThreshold: 1
     - _OutlineAttenuation: 4.14
-    - _OutlineDarkness: -0.3
+    - _OutlineDarkness: 0.2
     - _OutlineThreshold: 0.4
     - _PixelsPerPixel: 3
     - _Resolution: 640
