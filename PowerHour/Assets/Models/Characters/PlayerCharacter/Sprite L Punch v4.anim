@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Sprite R Punch
+  m_Name: Sprite L Punch v4
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -7791,10 +7791,10 @@ AnimationClip:
     m_LoopBlendPositionY: 0
     m_LoopBlendPositionXZ: 0
     m_KeepOriginalOrientation: 1
-    m_KeepOriginalPositionY: 1
+    m_KeepOriginalPositionY: 0
     m_KeepOriginalPositionXZ: 1
-    m_HeightFromFeet: 0
-    m_Mirror: 0
+    m_HeightFromFeet: 1
+    m_Mirror: 1
   m_EditorCurves:
   - serializedVersion: 2
     curve:
@@ -14793,15 +14793,8 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0
-    functionName: RPunchBegin
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
   - time: 0.93333334
-    functionName: RPunchEnd
+    functionName: LPunchEnd
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
