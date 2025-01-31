@@ -42,6 +42,7 @@ public class FPSController : MonoBehaviour
     public Vector3 velocity;     // m/s
     public float velocityMagnitude;
     public float accelerationMagnitude;
+    public bool currentlyPunching = false;
 
     void Awake()
     {
@@ -78,17 +79,19 @@ public class FPSController : MonoBehaviour
     //TODO: Slow turn speed a little as you get more drunk?
     private void UpdateLook()
     {
-
-        // 8 Directional movements based on wasd
-        (velocity, acceleration) = GetMovementComponents();
-
-        // point y rotation towards velocity
-        if (velocity != Vector3.zero)
+        if (!currentlyPunching)
         {
-            float targetAngle = Mathf.Atan2(velocity.x, velocity.z) * Mathf.Rad2Deg;
-            Quaternion targetRotation = Quaternion.Euler(0, targetAngle, 0);
+            // 8 Directional movements based on wasd
+            (velocity, acceleration) = GetMovementComponents();
 
-            transform.rotation = targetRotation;
+            // point y rotation towards velocity
+            if (velocity != Vector3.zero)
+            {
+                float targetAngle = Mathf.Atan2(velocity.x, velocity.z) * Mathf.Rad2Deg;
+                Quaternion targetRotation = Quaternion.Euler(0, targetAngle, 0);
+
+                transform.rotation = targetRotation;
+            }
         }
 
     }
@@ -125,14 +128,6 @@ public class FPSController : MonoBehaviour
             float targetAngle = Mathf.Atan2(directionToHitPoint.x, directionToHitPoint.z) * Mathf.Rad2Deg;
             Quaternion targetRotation = Quaternion.Euler(0, targetAngle, 0);
 
-            // Smoothly rotate the character towards the target rotation
-            /*transform.rotation = Quaternion.RotateTowards(
-                transform.rotation,
-                targetRotation,
-                turnSpeed * Time.deltaTime
-            );*/
-            // use above code for attacks ^, movement will just be wasd
-
             return targetRotation;
         }
 
@@ -151,6 +146,11 @@ public class FPSController : MonoBehaviour
         Vector3 actualDisplacement = CollideAndSlide(transform.position, velocity * Time.fixedDeltaTime);
 
         _ = CollideAndSlide(transform.position, velocity); // debug draw
+
+        if (currentlyPunching)
+        {
+            actualDisplacement *= 0.1f;
+        }
 
         transform.position += actualDisplacement;
     }

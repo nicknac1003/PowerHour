@@ -517,14 +517,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1535059269287794238}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0.00014336506}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0.00013969111}
   m_LocalPosition: {x: 1.360526, y: 0, z: -0.5923465}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6647705053383681356}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 179.984, z: 0}
 --- !u!114 &5801244469858383123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -552,6 +552,7 @@ MonoBehaviour:
   velocity: {x: 3e-45, y: 0, z: -3e-45}
   velocityMagnitude: 4e-45
   accelerationMagnitude: 0
+  currentlyPunching: 0
 --- !u!114 &9175745075659555926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -596,6 +597,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 2966929961549225715}
   playerController: {fileID: 5801244469858383123}
+  punchAnimSpeed: 1
+  punchCooldown: 1
+  turnSpeed: 1000
 --- !u!95 &2966929961549225715
 Animator:
   serializedVersion: 7
@@ -606,7 +610,7 @@ Animator:
   m_GameObject: {fileID: 1535059269287794238}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 94772804316a2424b93dad831042ab3e, type: 3}
-  m_Controller: {fileID: 9100000, guid: 8c4cf44bcb48c634ba0960c8309f88f3, type: 2}
+  m_Controller: {fileID: 9100000, guid: 9b55bb56d3c22654b852eebec173a11e, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
