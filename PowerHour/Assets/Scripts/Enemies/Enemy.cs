@@ -33,12 +33,16 @@ public class Enemy : MonoBehaviour, IDamageable
     
     [SerializeField]
     public float attackDelay;
+    private bool attacking = false;
 
     public bool isHit = false;
 
     public GameObject healthBarUI;
     public Slider healthBar;
     
+    private Camera mainCamera;
+
+    protected Animator animator;
     public virtual void attack()
     {
         return;
@@ -48,8 +52,10 @@ public class Enemy : MonoBehaviour, IDamageable
         float distanceToPlayer = Vector3.Distance(this.transform.position, target.transform.position);
         if (distanceToPlayer > range)
         {
-            if (!isHit)
+            if (!isHit && !attacking)
             {
+                animator.SetBool("isWalking", true);
+                animator.SetBool("inCombat", false);
                 //look at player without looking up or down
                 Vector3 direction = target.transform.position - this.transform.position;
                 direction.y = 0;
@@ -63,8 +69,17 @@ public class Enemy : MonoBehaviour, IDamageable
             }
         } else
         {
+            animator.SetBool("isWalking", false);
+            bool enterCombat = !animator.GetBool("inCombat");
+            animator.SetBool("inCombat", true);
+            //rotate 60 degrees on y axis
+            if (enterCombat)
+            {
+                this.transform.Rotate(0, 60, 0);
+            }
             if (Time.time > lastAttackTime + attackDelay)
             {
+                attacking = true;
                 lastAttackTime = Time.time;
                 attack();
             }
@@ -74,11 +89,14 @@ public class Enemy : MonoBehaviour, IDamageable
 
     public void Start()
     {
+        mainCamera = Camera.main;
         Init();
     }
 
     public virtual void Init()
     {
+        animator = GetComponent<Animator>();
+        Debug.Log(animator != null);
         if (healthBarUI != null)
         {
             healthBar.value = CalculateHealth();
@@ -97,6 +115,8 @@ public class Enemy : MonoBehaviour, IDamageable
             {
                 healthBarUI.SetActive(false);
             }
+            healthBarUI.transform.LookAt(mainCamera.transform);
+            healthBarUI.transform.Rotate(0, 180, 0);
         }
 
         move();
@@ -123,6 +143,10 @@ public class Enemy : MonoBehaviour, IDamageable
 
     }
 
-    
+    public void AttackDone()
+    {
+        Debug.Log("Attack done");
+        attacking = false;
+    }
 
 }

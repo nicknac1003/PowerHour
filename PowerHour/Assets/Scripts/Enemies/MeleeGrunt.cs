@@ -19,6 +19,16 @@ public class MeleeGrunt : Enemy
             float distanceToPlayer = Vector3.Distance(this.transform.position, target.transform.position);
             if (distanceToPlayer <= range)
             {
+                int attackChoice = Random.Range(0, 2);
+                switch (attackChoice)
+                {
+                    case 0:
+                        animator.SetTrigger("punch");
+                        break;
+                    case 1:
+                        animator.SetTrigger("uppercut");
+                        break;
+                }
                 Debug.Log("MeleeGrunt is attacking the player");
             }
         }
