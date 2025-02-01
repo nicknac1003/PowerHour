@@ -3,11 +3,18 @@ using UnityEngine;
 // This is a class that represents a basic melee enemy in the game
 public class MeleeGrunt : Enemy
 {
+    public float _currhp;
+    public float _maxhp;
+
+    [SerializeField]
+    public Transform attackPoint;
+
+    public float damage = 25f;
     public override void Init(){
         base.Init();
         id = "MeleeGrunt";
-        maxHealth = 50;
-        currentHealth = 50;
+        maxHealth = _maxhp;
+        currentHealth = _currhp;
     }
     public override void attack()
     {
@@ -31,6 +38,18 @@ public class MeleeGrunt : Enemy
                 }
                 Debug.Log("MeleeGrunt is attacking the player");
             }
+        }
+    }
+
+    public void DetectHit()
+    {
+        float hitDetectRange = 0.45f;
+        int playerLayer = LayerMask.NameToLayer("Player");
+        Collider[] hitColliders = Physics.OverlapSphere(attackPoint.position, hitDetectRange, 1 << playerLayer);
+        Debug.Log(hitColliders.Length);
+        foreach (var hitCollider in hitColliders)
+        {
+            hitCollider.GetComponent<IDamageable>().TakeDamage(damage);
         }
     }
 }

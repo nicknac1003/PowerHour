@@ -35,7 +35,7 @@ public class Enemy : MonoBehaviour, IDamageable
     public float attackDelay;
     private bool attacking = false;
 
-    public bool isHit = false;
+    protected bool isHit = false;
 
     public GameObject healthBarUI;
     public Slider healthBar;
@@ -50,6 +50,8 @@ public class Enemy : MonoBehaviour, IDamageable
     public virtual void move()
     {
         float distanceToPlayer = Vector3.Distance(this.transform.position, target.transform.position);
+        Vector3 direction = target.transform.position - this.transform.position;
+        direction.y = 0;
         if (distanceToPlayer > range)
         {
             if (!isHit && !attacking)
@@ -57,8 +59,7 @@ public class Enemy : MonoBehaviour, IDamageable
                 animator.SetBool("isWalking", true);
                 animator.SetBool("inCombat", false);
                 //look at player without looking up or down
-                Vector3 direction = target.transform.position - this.transform.position;
-                direction.y = 0;
+                
                 this.transform.rotation = Quaternion.LookRotation(direction);
 
                 this.transform.position = Vector3.MoveTowards(this.transform.position, this.transform.position + transform.forward, speed* Time.deltaTime);
@@ -72,11 +73,10 @@ public class Enemy : MonoBehaviour, IDamageable
             animator.SetBool("isWalking", false);
             bool enterCombat = !animator.GetBool("inCombat");
             animator.SetBool("inCombat", true);
-            //rotate 60 degrees on y axis
-            if (enterCombat)
-            {
-                this.transform.Rotate(0, 60, 0);
-            }
+
+            this.transform.rotation = Quaternion.LookRotation(direction);
+            this.transform.Rotate(0, 60, 0); //rotate extra for fighting stance to line up
+
             if (Time.time > lastAttackTime + attackDelay)
             {
                 attacking = true;
@@ -90,6 +90,10 @@ public class Enemy : MonoBehaviour, IDamageable
     public void Start()
     {
         mainCamera = Camera.main;
+        if (healthBarUI != null)
+        {
+            healthBar.value = 1;
+        }
         Init();
     }
 
@@ -97,14 +101,18 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         animator = GetComponent<Animator>();
         Debug.Log(animator != null);
-        if (healthBarUI != null)
-        {
-            healthBar.value = CalculateHealth();
-        }
+
         return;
     }
     public virtual void Update()
     {
+        //if keypress q then take damage
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            TakeDamage(10);
+            // Debug.Log(currentHealth);
+        }
+
         if (healthBarUI != null && healthBar != null)
         {
             healthBar.value = CalculateHealth();
@@ -125,19 +133,31 @@ public class Enemy : MonoBehaviour, IDamageable
 
     public float CalculateHealth()
     {
+        // Debug.Log("Health: " + currentHealth / maxHealth);
         return currentHealth / maxHealth;
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         if (Time.time > lastHitTime + hitDelay)
         {
+            //apply knockback effect
+            // if (knockback > 0)
+            // {
+            //     Vector3 direction = this.transform.position - target.transform.position;
+            //     direction.y = 0;
+            //     this.transform.position = Vector3.MoveTowards(this.transform.position, this.transform.position + direction, knockback);
+            // }
             lastHitTime = Time.time;
             currentHealth -= damage;
             isHit = true;
+            
             if (currentHealth <= 0)
             {
-                Destroy(gameObject, 0.5f);
+                animator.SetTrigger("Die");
+                Destroy(gameObject, 6f);
+            } else {
+                animator.SetTrigger("Hit");
             }
         }
 
@@ -145,7 +165,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
     public void AttackDone()
     {
-        Debug.Log("Attack done");
+        // Debug.Log("Attack done");
         attacking = false;
     }
 
