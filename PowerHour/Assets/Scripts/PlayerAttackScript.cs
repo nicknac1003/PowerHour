@@ -2,15 +2,24 @@ using UnityEngine;
 
 public class PlayerAttackScript : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private int kickDmg = 10;
+    [SerializeField] private int punchDmg = 5;
+    private void OnCollisionEnter(Collision other)
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        // Janky, but prevents me from having to add a oncollisionenter script to each player attack collider
+        foreach (ContactPoint contact in other.contacts)
+        {
+            // Check if the collider on THIS object that participated in the collision has the required tag.
+            if (contact.thisCollider.CompareTag("PlayerHurtCollider"))
+            {
+                if (other.gameObject.CompareTag("Enemy"))
+                {
+                    Debug.Log("Player hit enemy");
+                    other.gameObject.GetComponent<Enemy>().TakeDamage(punchDmg);
+                }
+                break;
+            }
+        }
     }
 }
