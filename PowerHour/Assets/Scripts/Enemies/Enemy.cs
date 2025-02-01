@@ -33,7 +33,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
     [SerializeField]
     public float attackDelay;
-    private bool attacking = false;
+    protected bool attacking = false;
 
     protected bool isHit = false;
 
@@ -106,7 +106,6 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
-        Debug.Log(animator != null);
 
         return;
     }
@@ -116,7 +115,6 @@ public class Enemy : MonoBehaviour, IDamageable
         if (Input.GetKeyDown(KeyCode.Q))
         {
             TakeDamage(10);
-            // Debug.Log(currentHealth);
         }
 
         if (healthBarUI != null && healthBar != null)

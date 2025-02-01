@@ -10,12 +10,19 @@ public class MeleeGrunt : Enemy
     public Transform attackPoint;
 
     public float damage = 25f;
+
+    [Header("Player Dammage Colliders")]
+    [SerializeField] private Collider rightHandCollider;
+    [SerializeField] private Collider leftHandCollider;
     public override void Init()
     {
         base.Init();
         id = "MeleeGrunt";
         maxHealth = _maxhp;
         currentHealth = _currhp;
+        target = GameObject.Find("Player");
+        rightHandCollider.enabled = false;
+        leftHandCollider.enabled = false;
     }
     public override void attack()
     {
@@ -52,5 +59,25 @@ public class MeleeGrunt : Enemy
         {
             hitCollider.GetComponent<IDamageable>().TakeDamage(damage);
         }
+    }
+
+    public void RPunchStart()
+    {
+        rightHandCollider.enabled = true;
+    }
+    public void RPunchEnd()
+    {
+        rightHandCollider.enabled = false;
+        attacking = false;
+    }
+
+    public void UppercutStart()
+    {
+        rightHandCollider.enabled = true;
+    }
+    public void UppercutEnd()
+    {
+        rightHandCollider.enabled = false;
+        attacking = false;
     }
 }
