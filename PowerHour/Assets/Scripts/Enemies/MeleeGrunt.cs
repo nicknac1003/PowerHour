@@ -43,7 +43,7 @@ public class MeleeGrunt : Enemy
 
     public void DetectHit()
     {
-        float hitDetectRange = 0.45f;
+        float hitDetectRange = 0.3f;
         int playerLayer = LayerMask.NameToLayer("Player");
         Collider[] hitColliders = Physics.OverlapSphere(attackPoint.position, hitDetectRange, 1 << playerLayer);
         Debug.Log(hitColliders.Length);

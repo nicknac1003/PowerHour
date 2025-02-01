@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class hitPositionGizmo : MonoBehaviour
 {
-    public float radius = 1.5f;
+    public float radius = .3f;
     public Color color = Color.red;
 
     void OnDrawGizmosSelected()
