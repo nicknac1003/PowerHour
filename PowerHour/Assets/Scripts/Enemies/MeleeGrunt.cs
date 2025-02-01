@@ -3,11 +3,19 @@ using UnityEngine;
 // This is a class that represents a basic melee enemy in the game
 public class MeleeGrunt : Enemy
 {
-    public override void Init(){
+    public float _currhp;
+    public float _maxhp;
+
+    [SerializeField]
+    public Transform attackPoint;
+
+    public float damage = 25f;
+    public override void Init()
+    {
         base.Init();
         id = "MeleeGrunt";
-        maxHealth = 50;
-        currentHealth = 50;
+        maxHealth = _maxhp;
+        currentHealth = _currhp;
     }
     public override void attack()
     {
@@ -33,4 +41,5 @@ public class MeleeGrunt : Enemy
             }
         }
     }
+
 }

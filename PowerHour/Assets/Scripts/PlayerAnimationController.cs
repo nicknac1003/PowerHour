@@ -41,13 +41,13 @@ public class PlayerAnimationController : MonoBehaviour
         {
             animator.SetTrigger("PunchQueued");
             animator.SetFloat("AnimSpeed", punchAnimSpeed); //here for debugging, remove later
-            /* // Look at mouse location when punching
+                                                            // Look at mouse location when punching
             Quaternion targetRotation = playerController.GetMouseLocation();
             transform.rotation = Quaternion.RotateTowards(
                 transform.rotation,
                 targetRotation,
                 turnSpeed * Time.deltaTime
-            );*/
+            );
         }
     }
 
