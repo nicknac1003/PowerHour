@@ -4,8 +4,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class FPSController : MonoBehaviour
+public class FPSController : MonoBehaviour, IDamageable
 {
+    public float maxHP=100;
+    private float _currentHealth;
+    private float _maxHealth;
+
+    public float currentHealth { get { return _currentHealth; } set { _currentHealth = value; } }
+    public float maxHealth { get { return _maxHealth; } set { _maxHealth = value; } }
+
     [SerializeField] private PlayerInput playerInput;
     [SerializeField] Transform crosshairPos;
 
@@ -52,6 +59,9 @@ public class FPSController : MonoBehaviour
         skinnyRadius = playerRadius - skinWidth;
 
         decayFactor = 1 - velocityDecay * Time.fixedDeltaTime;
+
+        maxHealth = maxHP;
+        currentHealth = maxHealth;
     }
     void Start()
     {
@@ -205,5 +215,19 @@ public class FPSController : MonoBehaviour
         Debug.DrawLine(origin, hit.point, Color.yellow, Time.fixedDeltaTime);
 
         return reducedDisplacement + CollideAndSlide(newOrigin, projectedDisplacement, bounceCount + 1);
+    }
+
+    public void TakeDamage(float damage)
+    {
+        currentHealth -= damage;
+        Debug.Log("Player took " + damage + " damage. Current health: " + currentHealth);
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+    public void Die()
+    {
+        Debug.Log("Player has died");
     }
 }
