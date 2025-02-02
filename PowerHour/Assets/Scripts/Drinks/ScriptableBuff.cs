@@ -13,7 +13,11 @@ public abstract class ScriptableBuff : ScriptableObject
     //Effect value is increased each time the buff is applied.
     public bool IsEffectStacked;
 
+    public string BuffName;
 
+    public Texture Icon;
+
+    public string Description;
 
     public abstract TimedBuff InitializeBuff(GameObject obj);
 

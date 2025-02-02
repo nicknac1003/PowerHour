@@ -259,4 +259,13 @@ public class PlayerController : MonoBehaviour, IDamageable
     {
         Debug.Log("Player has died");
     }
+
+    public void Heal(float amount)
+    {
+        currentHealth += amount;
+        if (currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+    }
 }
