@@ -54,6 +54,11 @@ public class PlayerAnimationController : MonoBehaviour
         }
     }
 
+    public void TakeDamage(int damage)
+    {
+        animator.SetTrigger("PlayerHit");
+    }
+
     public void PunchOver()
     {
         playerController.currentlyPunching = false;
@@ -65,22 +70,33 @@ public class PlayerAnimationController : MonoBehaviour
     void RPunchBegin()
     {
         playerController.currentlyPunching = true;
-        rightHandCollider.enabled = true;
         Quaternion targetRotation = playerController.GetMouseLocation();
         transform.rotation = targetRotation;
+    }
+    void EnableRHandCollider()
+    {
+        rightHandCollider.enabled = true;
+    }
+    void DisableRHandCollider()
+    {
+        rightHandCollider.enabled = false;
     }
     void RPunchEnd()
     {
         animator.SetTrigger("RPunchOver");
         animator.SetBool("CanStartCombo", false);
         timeUntilNextPunch = punchCooldown;
-        rightHandCollider.enabled = false;
     }
 
-    void LPunchBegin()
+    void EnableLHandCollider()
     {
         leftHandCollider.enabled = true;
     }
+    void DisableLHandCollider()
+    {
+        leftHandCollider.enabled = false;
+    }
+
     void LPunchEnd()
     {
         animator.SetTrigger("LPunchOver");
@@ -90,15 +106,18 @@ public class PlayerAnimationController : MonoBehaviour
 
     }
 
-    void KickBegin()
+    void EnableKickCollider()
     {
         leftFootCollider.enabled = true;
+    }
+    void DisableKickCollider()
+    {
+        leftFootCollider.enabled = false;
     }
     void KickEnd()
     {
         animator.SetTrigger("KickOver");
         animator.SetBool("CanStartCombo", false);
         timeUntilNextPunch = punchCooldown;
-        leftFootCollider.enabled = false;
     }
 }

@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 
 public class FPSController : MonoBehaviour, IDamageable
 {
-    public float maxHP=100;
+    public float maxHP = 100;
     private float _currentHealth;
     private float _maxHealth;
 
@@ -154,6 +154,7 @@ public class FPSController : MonoBehaviour, IDamageable
         accelerationMagnitude = acceleration.magnitude;
 
         Vector3 actualDisplacement = CollideAndSlide(transform.position, velocity * Time.fixedDeltaTime);
+        actualDisplacement.y = 0;
 
         _ = CollideAndSlide(transform.position, velocity); // debug draw
 
