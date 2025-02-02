@@ -1661,11 +1661,12 @@ MonoBehaviour:
   speed: 3.5
   range: 1
   id: 
-  target: {fileID: 0}
+  target: {fileID: 1535059269287794238, guid: aa2f210b5a72b4f49837ee023353a5c2, type: 3}
   hitDelay: 0.22
   attackDelay: 2
   healthBarUI: {fileID: 188672399412880614}
   healthBar: {fileID: 5891826515989068271}
+  rb: {fileID: 0}
   _currhp: 15
   _maxhp: 15
   attackPoint: {fileID: 3723139771700947667}

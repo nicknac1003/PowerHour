@@ -48,6 +48,45 @@ public class MeleeGrunt : Enemy
             }
         }
     }
+    public override void move()
+    {
+        float distanceToPlayer = Vector3.Distance(this.transform.position, target.transform.position);
+        Vector3 direction = target.transform.position - this.transform.position;
+        direction.y = 0;
+        if (distanceToPlayer > range)
+        {
+            if (!isHit && !attacking)
+            {
+                animator.SetBool("isWalking", true);
+                animator.SetBool("inCombat", false);
+                //look at player without looking up or down
+
+                this.transform.rotation = Quaternion.LookRotation(direction);
+
+                this.transform.position = Vector3.MoveTowards(this.transform.position, this.transform.position + transform.forward, speed * Time.deltaTime);
+            }
+            else if (Time.time > lastHitTime + hitDelay)
+            {
+                isHit = false;
+            }
+        }
+        else
+        {
+            animator.SetBool("isWalking", false);
+            bool enterCombat = !animator.GetBool("inCombat");
+            animator.SetBool("inCombat", true);
+
+            this.transform.rotation = Quaternion.LookRotation(direction);
+            this.transform.Rotate(0, 60, 0); //rotate extra for fighting stance to line up
+
+            if (Time.time > lastAttackTime + attackDelay)
+            {
+                attacking = true;
+                lastAttackTime = Time.time;
+                attack();
+            }
+        }
+    }
 
     public void DetectHit()
     {
