@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f1e99186b91e5548afdd47d5397f3a9, type: 3}
   m_Name: Appletini
   m_EditorClassIdentifier: 
+  IsPermanent: 1
   Duration: 0
   IsDurationStacked: 0
   IsEffectStacked: 0
-  IsPermanent: 0
-  arm: {fileID: 0}

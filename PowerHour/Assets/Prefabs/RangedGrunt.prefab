@@ -596,9 +596,9 @@ MonoBehaviour:
   target: {fileID: 1535059269287794238, guid: aa2f210b5a72b4f49837ee023353a5c2, type: 3}
   hitDelay: 0.1
   attackDelay: 2
-  healthBarUI: {fileID: 0}
-  healthBar: {fileID: 0}
-  rb: {fileID: 0}
+  healthBarUI: {fileID: 540023822305288099}
+  healthBar: {fileID: 2347961935652980942}
+  hitbox: {fileID: 0}
   _currhp: 30
   _maxhp: 30
   holdParent: {fileID: 2784618437303141}

@@ -15,13 +15,16 @@ class bottle : MonoBehaviour {
     }
 
     //on collision with player, destroy the bottle and deal damage to the player
-    public void OnCollisionEnter(Collision collision){
-        Debug.Log("Bottle collided with " + collision.gameObject.name);
-        IDamageable other = collision.gameObject.GetComponent<IDamageable>();
-        if (other != null){
-            other.TakeDamage(10);
+    public void OnTriggerEnter(Collider other){
+        Debug.Log("Bottle collided with " + other.gameObject.tag);
+        // IDamageable other = collision.gameObject.GetComponent<IDamageable>();
+        if (other.gameObject.tag == "Player Hitbox")
+        {
+            other.gameObject.GetComponentInParent<PlayerAnimationController>().TakeDamage(10);
+            other.gameObject.GetComponentInParent<PlayerController>().TakeDamage(10);
+            shatter();
         }
-        shatter();
+
     }
 
     public void shatter(){

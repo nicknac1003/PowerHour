@@ -1,52 +1,75 @@
 using UnityEngine;
 using System.Collections.Generic;
-
+using System.Linq;
 public class EnemySpawnController : MonoBehaviour
 {
     public GameObject player;
 
     public List<EnemyCost> enemies = new List<EnemyCost>();
 
-    public float spawnInterval = 5.0f;
-    public int maxEnemies = 10;
-    public int currentEnemies = 0;
+    private int currentEnemies = 0;
     private float lastSpawnTime;
 
-    [SerializeField]
-    List<Transform> spawnPoints = new List<Transform>();
+
+    private List<Transform> spawnPoints = new List<Transform>();
 
     private bool waveStarted;
     public List<GameObject> enemiesToSpawn = new List<GameObject>();
 
+    public List<Wave> waves = new List<Wave>();
+
+    public int currentWave = 0;
 
     void Start()
     {
+        //get all gameobjects with tag EnemySpawner
+        spawnPoints = GameObject.FindGameObjectsWithTag("EnemySpawnLocation").Select(x => x.transform).ToList();
         lastSpawnTime = Time.time;
         waveStarted = false;
+        generateWave();
+
     }
 
     void Update()
     {
-        if (!waveStarted)
+        //if spacebar pressed
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            generateWave();
+            startWave();
         }
-        else
+
+        if (waveStarted)
         {
-            if (currentEnemies < maxEnemies && Time.time - lastSpawnTime > spawnInterval)
+            Wave currWave = waves[currentWave];
+            if (currentEnemies < currWave.maxEnemies && Time.time - lastSpawnTime > currWave.spawnInterval)
             {
                 SpawnEnemy();
                 lastSpawnTime = Time.time;
             }
+            if (currentEnemies == 0 && enemiesToSpawn.Count == 0)
+            {
+                endWave();
+            }
         }
+    }
 
+    public void startWave(){
+        if (!waveStarted)
+        {
+            waveStarted = true;
+        }
+    }
 
+    public void endWave()
+    {
+        waveStarted = false;
+        currentWave++;
+        generateWave();
     }
 
     public void generateWave()
     {
-        waveStarted = true;
-        int waveBudget = 10;
+        int waveBudget = waves[currentWave].cost;
         while (waveBudget > 0)
         {
             int enemyIndex = Random.Range(0, enemies.Count);
@@ -86,4 +109,12 @@ public class EnemyCost
 {
     public GameObject enemyPrefab;
     public int cost;
+}
+
+[System.Serializable]
+public class Wave {
+    public int cost;
+    public int maxEnemies;
+    public float spawnInterval;
+
 }

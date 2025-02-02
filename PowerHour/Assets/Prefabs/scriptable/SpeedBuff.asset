@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09e1acca200e8f54c9d70af0ca6db48c, type: 3}
   m_Name: SpeedBuff
   m_EditorClassIdentifier: 
+  IsPermanent: 0
   Duration: 3.02
   IsDurationStacked: 0
   IsEffectStacked: 0
