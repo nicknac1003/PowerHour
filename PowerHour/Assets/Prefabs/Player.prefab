@@ -557,8 +557,7 @@ GameObject:
   - component: {fileID: 2966929961549225715}
   - component: {fileID: 2203918730885402967}
   - component: {fileID: 6632841563576350493}
-  - component: {fileID: 9022198527037339629}
-  - component: {fileID: 2276176425174400790}
+  - component: {fileID: 5047790263037833224}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -598,12 +597,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 100
   playerInput: {fileID: 9175745075659555926}
-  playerAnimationController: {fileID: 0}
+  playerAnimationController: {fileID: 4121181490525960611}
   crosshair: {fileID: 0}
-  cameraOffset: {x: 0, y: 0, z: 0}
-  cameraSpeed: 0
-  maxCrosshairDistance: 0
-  verticalScale: 0
+  cameraOffset: {x: -9, y: 9.5, z: -9}
+  cameraSpeed: 5
+  maxCrosshairDistance: 0.5
+  verticalScale: 1
   mouseSensitivityHorizontal: 1
   mouseSensitivityVertical: 1
   walkSpeed: 9
@@ -668,6 +667,10 @@ MonoBehaviour:
   rightHandCollider: {fileID: 5719134521179175540}
   leftHandCollider: {fileID: 2040843252830468795}
   leftFootCollider: {fileID: 878257226582135097}
+  punchSound: {fileID: 8300000, guid: 89a2a3b139e7a4f4193b154d1c844747, type: 3}
+  punchHitSound: {fileID: 8300000, guid: 1c24c5a040ec3724ba8525834f3673c3, type: 3}
+  kickSound: {fileID: 8300000, guid: 7e851c2336563444fab61fa7051aafa4, type: 3}
+  kickHitSound: {fileID: 8300000, guid: b274b243af0525e418691f89142629f2, type: 3}
 --- !u!95 &2966929961549225715
 Animator:
   serializedVersion: 7
@@ -730,34 +733,103 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 4
   m_CollisionDetection: 0
---- !u!114 &9022198527037339629
-MonoBehaviour:
+--- !u!82 &5047790263037833224
+AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1535059269287794238}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 792cfa0cb8c1e48488fc5bdf9ab0a706, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  kickDmg: 10
-  punchDmg: 5
---- !u!114 &2276176425174400790
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1535059269287794238}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 792cfa0cb8c1e48488fc5bdf9ab0a706, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  kickDmg: 10
-  punchDmg: 5
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1671065680027209396
 GameObject:
   m_ObjectHideFlags: 0
@@ -1180,9 +1252,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1222330057514743426}
   - component: {fileID: 5719134521179175540}
+  - component: {fileID: 115899933144144823}
   m_Layer: 8
   m_Name: RightHandHurtbox
-  m_TagString: PlayerHurtCollider
+  m_TagString: Punch
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1225,6 +1298,20 @@ CapsuleCollider:
   m_Height: 0.53
   m_Direction: 1
   m_Center: {x: 0, y: 0.01, z: 0}
+--- !u!114 &115899933144144823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3067031721094206740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 792cfa0cb8c1e48488fc5bdf9ab0a706, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitType: 0
+  damage: 2
 --- !u!1 &3116870528788139208
 GameObject:
   m_ObjectHideFlags: 0
@@ -2623,9 +2710,10 @@ GameObject:
   m_Component:
   - component: {fileID: 348374804294398548}
   - component: {fileID: 878257226582135097}
+  - component: {fileID: 3279805710017335283}
   m_Layer: 8
   m_Name: mixamorig:LeftLeg
-  m_TagString: Player
+  m_TagString: Kick
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2669,6 +2757,20 @@ CapsuleCollider:
   m_Height: 0.75
   m_Direction: 1
   m_Center: {x: 0, y: 0.39, z: 0}
+--- !u!114 &3279805710017335283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8544431506566911529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 792cfa0cb8c1e48488fc5bdf9ab0a706, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitType: 1
+  damage: 5
 --- !u!1 &8672446787197673950
 GameObject:
   m_ObjectHideFlags: 0
@@ -2742,9 +2844,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6813985841233020756}
   - component: {fileID: 2040843252830468795}
+  - component: {fileID: 2959959596539350344}
   m_Layer: 8
   m_Name: LeftHandHurtbox
-  m_TagString: Player
+  m_TagString: Punch
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2787,6 +2890,20 @@ CapsuleCollider:
   m_Height: 0.53
   m_Direction: 1
   m_Center: {x: 0, y: 0.07, z: 0}
+--- !u!114 &2959959596539350344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8754522228759571037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 792cfa0cb8c1e48488fc5bdf9ab0a706, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitType: 0
+  damage: 2
 --- !u!1 &8898475262557364207
 GameObject:
   m_ObjectHideFlags: 0
