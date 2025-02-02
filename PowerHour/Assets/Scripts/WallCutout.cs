@@ -8,7 +8,6 @@ public class WallCutout : MonoBehaviour
 
     private float playerHeight;
     private float playerRadius;
-    private Vector3 playerBounds;
 
     [SerializeField] private float cutoutRadius;
     [SerializeField] private float cutoutFade;
@@ -19,10 +18,6 @@ public class WallCutout : MonoBehaviour
 
         playerHeight = playerController.playerHeight;
         playerRadius = playerController.playerRadius;
-
-        playerBounds = new Vector3(-1, 0, -1).normalized * playerRadius; // I only care about X and Z here -- Negative is closest point to camera
-
-        player = GameObject.Find("Player").transform;
     }
 
     private void Update()

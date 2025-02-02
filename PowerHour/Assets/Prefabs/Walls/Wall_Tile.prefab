@@ -51,18 +51,18 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: f8712ece87245c444ab5170959c198d1, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: e72a2d4ac002c7d499259261df6f7fef, type: 2}
+      objectReference: {fileID: 2100000, guid: bd3be3c690146ae498e87cac1dd04506, type: 2}
     - target: {fileID: -7511558181221131132, guid: f8712ece87245c444ab5170959c198d1, type: 3}
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
-      objectReference: {fileID: 2100000, guid: fdc0bb323ab03194db968ddce5353f0e, type: 2}
+      objectReference: {fileID: 2100000, guid: bd3be3c690146ae498e87cac1dd04506, type: 2}
     - target: {fileID: -7511558181221131132, guid: f8712ece87245c444ab5170959c198d1, type: 3}
       propertyPath: 'm_Materials.Array.data[2]'
       value: 
-      objectReference: {fileID: 2100000, guid: 0acc95b657b7cae448fb800d2953a343, type: 2}
+      objectReference: {fileID: 2100000, guid: 9884e96a84f901c4c881d96370234960, type: 2}
     - target: {fileID: 919132149155446097, guid: f8712ece87245c444ab5170959c198d1, type: 3}
       propertyPath: m_Name
-      value: Wall_Brick
+      value: Wall_Tile
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f8712ece87245c444ab5170959c198d1, type: 3}
       propertyPath: m_Layer
