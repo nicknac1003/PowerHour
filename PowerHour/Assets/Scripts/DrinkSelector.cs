@@ -22,8 +22,8 @@ public class DrinkSelector : MonoBehaviour
         {
             ScriptableBuff drink = selectedDrinks[i];
             SelectDrink drinkComponent = drinkOptions[i].GetComponent<SelectDrink>();
-            drinkComponent.setAssets(drink.BuffName, drink.Description, drink.Icon);
             drinkComponent.drink = drink;
+            drinkComponent.setAssets(drink.BuffName, drink.Icon);
         }
     }
 

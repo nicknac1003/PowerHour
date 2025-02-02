@@ -18,5 +18,7 @@ MonoBehaviour:
   IsEffectStacked: 0
   BuffName: Beer
   Icon: {fileID: 2800000, guid: 950c39d2720fd184a8a6b3fd5d58308f, type: 3}
-  Description: Regain health
+  Description: Regain {HealAmount} health
+  Arguments:
+  - HealAmount
   HealAmount: 25
