@@ -125,7 +125,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         Ray ray = Camera.main.ScreenPointToRay(crosshairScreenPosition);
 
         // Perform the raycast to find where the crosshair hits the floor
-        if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
+        if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, LayerMask.GetMask("Floor")))
         {
             // Get the point where the raycast hits the floor
             Vector3 floorHitPoint = hit.point;
