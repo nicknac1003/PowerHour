@@ -605,7 +605,7 @@ MonoBehaviour:
   verticalScale: 1
   mouseSensitivityHorizontal: 1
   mouseSensitivityVertical: 1
-  walkSpeed: 9
+  walkSpeed: 4
   dashSpeed: 0
   turnSpeed: 1000
   playerHeight: 2
@@ -617,6 +617,7 @@ MonoBehaviour:
   velocityMagnitude: 4e-45
   accelerationMagnitude: 0
   currentlyPunching: 0
+  healthBarUI: {fileID: 4532960572375414242, guid: c4b522025ec3baa44a3266b12cbc934f, type: 3}
 --- !u!114 &9175745075659555926
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
+using TMPro;
 
 public class PlayerController : MonoBehaviour, IDamageable
 {
@@ -64,6 +66,11 @@ public class PlayerController : MonoBehaviour, IDamageable
     public float accelerationMagnitude;
     public bool currentlyPunching = false;
 
+    [Header("HealthBar")]
+    public GameObject healthBarUI;
+    private Slider healthBar;
+    private TextMeshProUGUI healthText;
+
 
     void Awake()
     {
@@ -75,12 +82,20 @@ public class PlayerController : MonoBehaviour, IDamageable
 
         decayFactor = 1 - velocityDecay * Time.fixedDeltaTime;
 
-        maxHealth = maxHP;
-        currentHealth = maxHealth;
+
     }
     void Start()
     {
         Cursor.visible = true; // make false and replace with custom cursor
+
+        maxHealth = maxHP;
+        currentHealth = maxHealth;
+
+
+        healthBar = healthBarUI.GetComponentInChildren<Slider>();
+        healthText = healthBarUI.GetComponentsInChildren<TextMeshProUGUI>()[1];
+        Debug.Log(healthBar.value + " " + healthText.text);
+        healthBar.value = 1;
         
     }
     void Update()
@@ -88,6 +103,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         UpdateLook();
         UpdateBuffs();
         UpdateAttack();
+        UpdateHealthBar();
     }
 
     void FixedUpdate()
@@ -305,5 +321,17 @@ public class PlayerController : MonoBehaviour, IDamageable
         {
             currentHealth = maxHealth;
         }
+    }
+    public float CalculateHealth()
+    {
+        // Debug.Log("Health: " + currentHealth / maxHealth);
+        return currentHealth / maxHealth;
+    }
+
+    public void UpdateHealthBar()
+    {
+        Debug.Log("Updating health bar " + healthBar.value + " " + healthText.text);
+        healthBar.value = CalculateHealth();
+        healthText.text = Mathf.Max(currentHealth, 0) + "/" + maxHealth;
     }
 }

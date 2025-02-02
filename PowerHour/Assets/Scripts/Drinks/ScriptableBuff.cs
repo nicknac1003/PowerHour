@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Reflection;
+
+
 public abstract class ScriptableBuff : ScriptableObject
 {
     public bool IsPermanent;
