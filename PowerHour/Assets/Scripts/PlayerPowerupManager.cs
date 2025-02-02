@@ -11,17 +11,21 @@ public class PlayerPowerupManager : MonoBehaviour
         // This triggers when inspector values change during gameplay
         if (Application.isPlaying)
         {
-            if (hasAppletini)
-            {
-                AppletiniPowerup();
-            }
+            AppletiniPowerup();
         }
     }
 
 
     void AppletiniPowerup()
     {
-        rightArm.localScale = new Vector3(1.5f, 2.0f, 1.5f);
+        if (hasAppletini)
+        {
+            rightArm.localScale = new Vector3(1.5f, 2.0f, 1.5f);
+        }
+        else
+        {
+            rightArm.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+        }
     }
 
 

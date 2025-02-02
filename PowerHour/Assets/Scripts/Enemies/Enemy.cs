@@ -30,19 +30,25 @@ public class Enemy : MonoBehaviour, IDamageable
     public float hitDelay;
 
     protected float lastAttackTime;
-    
+
     [SerializeField]
     public float attackDelay;
-    private bool attacking = false;
+    protected bool attacking = false;
 
     protected bool isHit = false;
 
     public GameObject healthBarUI;
     public Slider healthBar;
-    
+
     private Camera mainCamera;
 
     protected Animator animator;
+
+    public Rigidbody rb;
+    int smallHitLaunchFactor = 10;
+    int bigHitLaunchFactor = 2;
+
+    protected bool isDead = false;
     public virtual void attack()
     {
         return;
@@ -59,23 +65,24 @@ public class Enemy : MonoBehaviour, IDamageable
                 animator.SetBool("isWalking", true);
                 animator.SetBool("inCombat", false);
                 //look at player without looking up or down
-                
+
                 this.transform.rotation = Quaternion.LookRotation(direction);
 
-                this.transform.position = Vector3.MoveTowards(this.transform.position, this.transform.position + transform.forward, speed* Time.deltaTime);
-            } 
+                this.transform.position = Vector3.MoveTowards(this.transform.position, this.transform.position + transform.forward, speed * Time.deltaTime);
+            }
             else if (Time.time > lastHitTime + hitDelay)
             {
                 isHit = false;
             }
-        } else
+        }
+        else
         {
             animator.SetBool("isWalking", false);
             bool enterCombat = !animator.GetBool("inCombat");
             animator.SetBool("inCombat", true);
 
             this.transform.rotation = Quaternion.LookRotation(direction);
-            this.transform.Rotate(0, 60, 0); //rotate extra for fighting stance to line up
+            // this.transform.Rotate(0, 60, 0); //rotate extra for fighting stance to line up
 
             if (Time.time > lastAttackTime + attackDelay)
             {
@@ -89,6 +96,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
     public void Start()
     {
+        Debug.Log(target.transform.position);
         mainCamera = Camera.main;
         if (healthBarUI != null)
         {
@@ -99,8 +107,8 @@ public class Enemy : MonoBehaviour, IDamageable
 
     public virtual void Init()
     {
+        rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
-        Debug.Log(animator != null);
 
         return;
     }
@@ -110,7 +118,6 @@ public class Enemy : MonoBehaviour, IDamageable
         if (Input.GetKeyDown(KeyCode.Q))
         {
             TakeDamage(10);
-            // Debug.Log(currentHealth);
         }
 
         if (healthBarUI != null && healthBar != null)
@@ -119,15 +126,18 @@ public class Enemy : MonoBehaviour, IDamageable
             if (currentHealth < maxHealth)
             {
                 healthBarUI.SetActive(true);
-            } else
+            }
+            else
             {
                 healthBarUI.SetActive(false);
             }
             healthBarUI.transform.LookAt(mainCamera.transform);
             healthBarUI.transform.Rotate(0, 180, 0);
         }
-
-        move();
+        if (!isDead)
+        {
+            move();
+        }
 
     }
 
@@ -141,26 +151,39 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         if (Time.time > lastHitTime + hitDelay)
         {
-            //apply knockback effect
-            // if (knockback > 0)
-            // {
-            //     Vector3 direction = this.transform.position - target.transform.position;
-            //     direction.y = 0;
-            //     this.transform.position = Vector3.MoveTowards(this.transform.position, this.transform.position + direction, knockback);
-            // }
             lastHitTime = Time.time;
             currentHealth -= damage;
             isHit = true;
-            
+
             if (currentHealth <= 0)
             {
+                isDead = true;
                 animator.SetTrigger("Die");
                 Destroy(gameObject, 6f);
-            } else {
+            }
+            else
+            {
                 animator.SetTrigger("Hit");
+                Vector3 direction = target.transform.position - this.transform.position;
+                direction.y = 0.5f;
+                if (direction != Vector3.zero)
+                {
+                    direction.Normalize();
+                }
+                if (damage > 10)
+                {
+                    ApplyForce(direction, 100);
+                }
+                else
+                {
+                    ApplyForce(direction, 5);
+                }
             }
         }
-
+    }
+    private void ApplyForce(Vector3 direction, int launchFactor)
+    {
+        rb.AddForce(direction * launchFactor, ForceMode.Impulse);
     }
 
     public void AttackDone()
@@ -168,5 +191,9 @@ public class Enemy : MonoBehaviour, IDamageable
         // Debug.Log("Attack done");
         attacking = false;
     }
-
+    public void AttackStart()
+    {
+        // Debug.Log("Attack start");
+        attacking = true;
+    }
 }
