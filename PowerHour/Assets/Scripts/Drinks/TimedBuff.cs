@@ -45,21 +45,17 @@ public abstract class TimedBuff
      */
     public void Activate()
     {
-        if (Buff.IsPermanent)
-        {
-            ApplyEffect();
-            return;
-        }
-        if (Buff.IsEffectStacked || Duration <= 0)
+        if (Buff.IsEffectStacked || Duration <= 0 || (Buff.IsPermanent && EffectStacks == 0))
         {
             ApplyEffect();
             EffectStacks++;
         }
         
-        if (Buff.IsDurationStacked || Duration <= 0)
+        if ( (Buff.IsDurationStacked || Duration <= 0) && !Buff.IsPermanent)
         {
             Duration += Buff.Duration;
         }
+
     }
     protected abstract void ApplyEffect();
      // Called every TickRate seconds. Can be used for things such as damage over time or healing over time.

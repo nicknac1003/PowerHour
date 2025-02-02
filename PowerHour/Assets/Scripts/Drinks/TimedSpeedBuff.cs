@@ -14,7 +14,6 @@ public class TimedSpeedBuff : TimedBuff
     {
         //Add speed increase to MovementComponent
         component.walkSpeed += ((SpeedBuff)Buff).SpeedIncrease;
-        Duration = ((SpeedBuff)Buff).duration;
     }
 
     public override void End()
