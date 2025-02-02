@@ -17,10 +17,12 @@ public class PlayerController : MonoBehaviour, IDamageable
     public float maxHealth { get { return _maxHealth; } set { _maxHealth = value; } }
 
     [SerializeField] private PlayerInput playerInput;
-    [SerializeField] Transform crosshairPos;
+    [SerializeField] private PlayerAnimationController playerAnimationController;
+    [SerializeField] Transform crosshair;
 
     InputAction lookAction;
     InputAction moveAction;
+    InputAction attackAction;
 
     public enum MoveState
     {
@@ -28,9 +30,17 @@ public class PlayerController : MonoBehaviour, IDamageable
         Dashing
     };
 
+    [Header("Camera Parameters")]
+    public Vector3 cameraOffset;
+    public float cameraSpeed;
+    public float maxCrosshairDistance;
+    public float verticalScale; // less vertical room, so scale up input for better visibility
+
     [Header("Cursor Parameters")]
     public float mouseSensitivityHorizontal;
     public float mouseSensitivityVertical;
+    private Vector3 crosshairWorldPosition;
+    private Vector3 dampingVelocity;
 
     [Header("Walk Paramters")]
     public float walkSpeed; // m/s
@@ -57,8 +67,9 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     void Awake()
     {
-        lookAction = playerInput.actions.FindAction("Look");
-        moveAction = playerInput.actions.FindAction("Move");
+        lookAction    = playerInput.actions.FindAction("Look");
+        moveAction    = playerInput.actions.FindAction("Move");
+        attackAction = playerInput.actions.FindAction("Attack");
 
         skinnyRadius = playerRadius - skinWidth;
 
@@ -75,30 +86,10 @@ public class PlayerController : MonoBehaviour, IDamageable
     void Update()
     {
         UpdateLook();
-
-        //updates buffs
-        foreach (var buff in _buffs.Values.ToList())
-        {
-            buff.Tick(Time.deltaTime);
-            if (buff.IsFinished)
-            {
-                _buffs.Remove(buff.Buff);
-            }
-        }
+        UpdateBuffs();
+        UpdateAttack();
     }
 
-    public void AddBuff(TimedBuff buff)
-    {
-        if (_buffs.ContainsKey(buff.Buff))
-        {
-            _buffs[buff.Buff].Activate();
-        }
-        else
-        {
-            _buffs.Add(buff.Buff, buff);
-            buff.Activate();
-        }
-    }
     void FixedUpdate()
     {
         UpdatePosition();
@@ -117,11 +108,14 @@ public class PlayerController : MonoBehaviour, IDamageable
     //TODO: Slow turn speed a little as you get more drunk?
     private void UpdateLook()
     {
+        // Update crosshair location
+        UpdateCrosshairLocation();
+
+        UpdateCameraLocation();
+        
+
         if (!currentlyPunching)
         {
-            // 8 Directional movements based on wasd
-            (velocity, acceleration) = GetMovementComponents();
-
             // point y rotation towards velocity
             if (velocity != Vector3.zero)
             {
@@ -134,49 +128,57 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     }
 
-    // Get the transform of the mouse location in the world (on the floor) for attacks.
-    public Quaternion GetMouseLocation()
+    private void UpdateCameraLocation()
     {
-        // Ensure the crosshair is assigned
-        if (crosshairPos == null)
+        // Move camera to follow player
+        Vector3 toCrosshair = ToCrosshair();
+        float crosshairDistance = Mathf.Min(toCrosshair.magnitude, maxCrosshairDistance);
+        Vector3 crosshairTarget = toCrosshair.normalized * crosshairDistance;
+        
+        // Scale crosshairTarget along 45 degree line
+        Vector3 projectedVertical   = Vector3.Project(crosshairTarget, new Vector3(1, 0, 1));   // forward is +X & +Z
+        Vector3 projectedHorizontal = Vector3.Project(crosshairTarget, new Vector3(1, 0 , -1)); // right   is +X & -Z
+
+        projectedVertical *= verticalScale;
+
+        crosshairTarget = projectedVertical + projectedHorizontal;
+
+        Vector3 targetPosition = transform.position + cameraOffset + crosshairTarget;
+        Camera.main.transform.position = Vector3.SmoothDamp(Camera.main.transform.position, targetPosition, ref dampingVelocity, 1f / cameraSpeed);
+    }
+
+    private void UpdateCrosshairLocation()
+    {
+        crosshairWorldPosition = Vector3.zero;
+
+        if(crosshair == null)
         {
             Debug.LogWarning("Crosshair not assigned!");
-            return Quaternion.identity;
+            return;
         }
 
-        // Raycast from the camera through the crosshair to find the floor, then turn Ydir towards that point
-
-        // Get the crosshair's position in screen space
-        Vector3 crosshairScreenPosition = crosshairPos.position;
-
-        // Create a ray from the camera through the crosshair position
-        Ray ray = Camera.main.ScreenPointToRay(crosshairScreenPosition);
-
-        // Perform the raycast to find where the crosshair hits the floor
-        if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, LayerMask.GetMask("Floor")))
+        if(Physics.Raycast(Camera.main.ScreenPointToRay(crosshair.position), out RaycastHit hit, Mathf.Infinity, LayerMask.GetMask("Floor")))
         {
-            // Get the point where the raycast hits the floor
-            Vector3 floorHitPoint = hit.point;
-
-            // Calculate the direction from the character to the hit point
-            Vector3 directionToHitPoint = floorHitPoint - transform.position;
-            directionToHitPoint.y = 0; // Ignore vertical difference (Y-axis) for 2.5D rotation
-
-            // Calculate the target rotation to face the hit point
-            float targetAngle = Mathf.Atan2(directionToHitPoint.x, directionToHitPoint.z) * Mathf.Rad2Deg;
-            Quaternion targetRotation = Quaternion.Euler(0, targetAngle, 0);
-
-            return targetRotation;
+            crosshairWorldPosition = new Vector3(hit.point.x, 0, hit.point.z); // ALWAYS on floor level (Y = 0)
         }
 
-        Debug.Log("Crosshair not on screen, error on GetMouseLocation()");
-        return Quaternion.identity;
+        Debug.LogWarning("Crosshair did not hit collider!");
+    }
 
+    // Get the transform of the mouse location in the world (on the floor) for attacks.
+    public Quaternion GetAngleToTagret()
+    {
+        Vector3 directionToHitPoint = ToCrosshair();
+        return Quaternion.Euler(0, Mathf.Atan2(directionToHitPoint.x, directionToHitPoint.z) * Mathf.Rad2Deg, 0);;
+    }
+    public Vector3 ToCrosshair()
+    {
+        return crosshairWorldPosition - transform.position;
     }
 
     private void UpdatePosition()
     {
-        (velocity, acceleration) = GetMovementComponents();
+        (velocity, acceleration) = CalculateMovement();
 
         velocityMagnitude = velocity.magnitude;
         accelerationMagnitude = acceleration.magnitude;
@@ -192,9 +194,11 @@ public class PlayerController : MonoBehaviour, IDamageable
         }
 
         transform.position += actualDisplacement;
+
+        transform.position = new Vector3(transform.position.x, 0, transform.transform.position.z); // ALWAYS on floor level (Y = 0)
     }
 
-    private (Vector3 v, Vector3 a) GetMovementComponents()
+    private (Vector3 v, Vector3 a) CalculateMovement()
     {
         Vector2 input = moveAction.ReadValue<Vector2>().normalized; // wish direction
 
@@ -246,6 +250,15 @@ public class PlayerController : MonoBehaviour, IDamageable
         return reducedDisplacement + CollideAndSlide(newOrigin, projectedDisplacement, bounceCount + 1);
     }
 
+
+    private void UpdateAttack()
+    {
+        if(attackAction.triggered)
+        {
+            playerAnimationController.StartPunch();
+        }
+    }
+
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
@@ -258,6 +271,31 @@ public class PlayerController : MonoBehaviour, IDamageable
     public void Die()
     {
         Debug.Log("Player has died");
+    }
+
+    private void UpdateBuffs()
+    {
+        foreach (var buff in _buffs.Values.ToList())
+        {
+            buff.Tick(Time.deltaTime);
+            if (buff.IsFinished)
+            {
+                _buffs.Remove(buff.Buff);
+            }
+        }
+    }
+
+    public void AddBuff(TimedBuff buff)
+    {
+        if (_buffs.ContainsKey(buff.Buff))
+        {
+            _buffs[buff.Buff].Activate();
+        }
+        else
+        {
+            _buffs.Add(buff.Buff, buff);
+            buff.Activate();
+        }
     }
 
     public void Heal(float amount)

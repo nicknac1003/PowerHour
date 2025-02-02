@@ -39,19 +39,12 @@ public class PlayerAnimationController : MonoBehaviour
         {
             animator.SetBool("CanStartCombo", true);
         }
-
-        StartPunch();
     }
 
-    private void StartPunch()
+    public void StartPunch()
     {
-        // on left click, punch
-        if (Input.GetMouseButtonDown(0))
-        {
-            animator.SetTrigger("PunchQueued");
-            animator.SetFloat("AnimSpeed", punchAnimSpeed); //here for debugging, remove later
-                                                            // Look at mouse location when punching
-        }
+        animator.SetTrigger("PunchQueued");
+        animator.SetFloat("AnimSpeed", punchAnimSpeed); //here for debugging, remove later
     }
 
     public void TakeDamage(int damage)
@@ -70,8 +63,7 @@ public class PlayerAnimationController : MonoBehaviour
     void RPunchBegin()
     {
         playerController.currentlyPunching = true;
-        Quaternion targetRotation = playerController.GetMouseLocation();
-        transform.rotation = targetRotation;
+        transform.rotation = playerController.GetAngleToTagret();
     }
     void EnableRHandCollider()
     {
