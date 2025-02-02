@@ -15,10 +15,11 @@ class SelectDrink : MonoBehaviour
         player.AddBuff(drink.InitializeBuff(player.gameObject));
     }
 
-    public void setAssets(string name, string desc, Texture img)
+    public void setAssets(string name, Texture img)
     {
+
         nameText.text = name;
-        descriptionText.text = desc;
+        descriptionText.text = drink.GetFormattedDescription();
         icon.texture = img;
 
     }

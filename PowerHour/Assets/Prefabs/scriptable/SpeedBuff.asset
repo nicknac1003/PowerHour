@@ -16,7 +16,9 @@ MonoBehaviour:
   Duration: 3.02
   IsDurationStacked: 0
   IsEffectStacked: 0
-  BuffName: Vodka Redbull
+  BuffName: Vodka Energy Drink
   Icon: {fileID: 2800000, guid: 763d6b2c4ac592b42aa505ece003c346, type: 3}
-  Description: Increase speed
+  Description: Increase speed by {SpeedIncrease}
+  Arguments:
+  - SpeedIncrease
   SpeedIncrease: 5

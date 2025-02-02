@@ -10,6 +10,8 @@ TagManager:
   - Enemy Hitbox
   - Player Hitbox
   - EnemySpawnLocation
+  - Punch
+  - Kick
   layers:
   - Default
   - TransparentFX
