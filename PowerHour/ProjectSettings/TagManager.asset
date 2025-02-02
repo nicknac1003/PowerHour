@@ -7,6 +7,8 @@ TagManager:
   - PlayerHurtCollider
   - EnemyHurtCollider
   - Enemy
+  - Enemy Hitbox
+  - Player Hitbox
   layers:
   - Default
   - TransparentFX
@@ -16,10 +18,10 @@ TagManager:
   - UI
   - Player
   - Enemy
-  - PlayerHurtBox
-  - EnemyHurtBox
-  - 
-  - 
+  - PlayerHurtbox
+  - EnemyHurtbox
+  - EnemyHitbox
+  - PlayerHitbox
   - 
   - 
   - 
