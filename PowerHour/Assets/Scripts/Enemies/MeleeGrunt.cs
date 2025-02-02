@@ -80,8 +80,6 @@ public class MeleeGrunt : Enemy
             animator.SetBool("inCombat", true);
 
             this.transform.rotation = Quaternion.LookRotation(direction);
-            this.transform.Rotate(0, 60, 0); //rotate extra for fighting stance to line up
-
             if (Time.time > lastAttackTime + attackDelay)
             {
                 attacking = true;

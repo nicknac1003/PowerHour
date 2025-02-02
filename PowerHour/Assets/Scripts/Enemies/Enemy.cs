@@ -85,7 +85,6 @@ public class Enemy : MonoBehaviour, IDamageable
             animator.SetBool("inCombat", true);
 
             this.transform.rotation = Quaternion.LookRotation(direction);
-            this.transform.Rotate(0, 60, 0); //rotate extra for fighting stance to line up
 
             if (Time.time > lastAttackTime + attackDelay)
             {
@@ -99,7 +98,6 @@ public class Enemy : MonoBehaviour, IDamageable
 
     public void Start()
     {
-        Debug.Log(target.transform.position);
         mainCamera = Camera.main;
         if (healthBarUI != null)
         {
@@ -167,8 +165,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
             if (currentHealth <= 0)
             {
-                animator.SetTrigger("Die");
-                Destroy(gameObject, 6f);
+                Die();
             }
             else
             {
