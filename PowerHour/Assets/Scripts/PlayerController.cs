@@ -1,12 +1,15 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour, IDamageable
 {
-    public float maxHP = 100;
+    [SerializeField] public Dictionary<ScriptableBuff, TimedBuff> _buffs = new Dictionary<ScriptableBuff, TimedBuff>();
+
+    public float maxHP=100;
     private float _currentHealth;
     private float _maxHealth;
 
@@ -51,6 +54,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     public float accelerationMagnitude;
     public bool currentlyPunching = false;
 
+
     void Awake()
     {
         lookAction = playerInput.actions.FindAction("Look");
@@ -66,10 +70,34 @@ public class PlayerController : MonoBehaviour, IDamageable
     void Start()
     {
         Cursor.visible = true; // make false and replace with custom cursor
+        
     }
     void Update()
     {
         UpdateLook();
+
+        //updates buffs
+        foreach (var buff in _buffs.Values.ToList())
+        {
+            buff.Tick(Time.deltaTime);
+            if (buff.IsFinished)
+            {
+                _buffs.Remove(buff.Buff);
+            }
+        }
+    }
+
+    public void AddBuff(TimedBuff buff)
+    {
+        if (_buffs.ContainsKey(buff.Buff))
+        {
+            _buffs[buff.Buff].Activate();
+        }
+        else
+        {
+            _buffs.Add(buff.Buff, buff);
+            buff.Activate();
+        }
     }
     void FixedUpdate()
     {

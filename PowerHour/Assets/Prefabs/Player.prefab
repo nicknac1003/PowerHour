@@ -596,6 +596,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59498e9d05513ee48951faebde18620b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speedBuffPrefab: {fileID: 0}
   maxHP: 100
   playerInput: {fileID: 9175745075659555926}
   crosshairPos: {fileID: 0}
