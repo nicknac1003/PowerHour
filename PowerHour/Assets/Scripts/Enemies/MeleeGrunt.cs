@@ -9,7 +9,7 @@ public class MeleeGrunt : Enemy
     [SerializeField]
     public Transform attackPoint;
 
-    public float damage = 25f;
+    public int damage = 25;
 
     [Header("Player Dammage Colliders")]
     [SerializeField] private Collider rightHandCollider;
@@ -23,6 +23,9 @@ public class MeleeGrunt : Enemy
         target = GameObject.Find("Player");
         rightHandCollider.enabled = false;
         leftHandCollider.enabled = false;
+
+        DisableLHandCollider();
+        DisableRHandCollider();
     }
     public override void attack()
     {
@@ -88,35 +91,28 @@ public class MeleeGrunt : Enemy
         }
     }
 
-    public void DetectHit()
-    {
-        float hitDetectRange = 0.3f;
-        int playerLayer = LayerMask.NameToLayer("Player");
-        Collider[] hitColliders = Physics.OverlapSphere(attackPoint.position, hitDetectRange, 1 << playerLayer);
-        Debug.Log(hitColliders.Length);
-        foreach (var hitCollider in hitColliders)
-        {
-            hitCollider.GetComponent<IDamageable>().TakeDamage(damage);
-        }
-    }
-
-    public void RPunchStart()
+    public void EnableRHandCollider()
     {
         rightHandCollider.enabled = true;
+    }
+    public void DisableRHandCollider()
+    {
+        rightHandCollider.enabled = false;
+    }
+    public void EnableLHandCollider()
+    {
+        leftHandCollider.enabled = true;
+    }
+    public void DisableLHandCollider()
+    {
+        leftHandCollider.enabled = false;
     }
     public void RPunchEnd()
     {
-        rightHandCollider.enabled = false;
         attacking = false;
-    }
-
-    public void UppercutStart()
-    {
-        rightHandCollider.enabled = true;
     }
     public void UppercutEnd()
     {
-        rightHandCollider.enabled = false;
         attacking = false;
     }
 }

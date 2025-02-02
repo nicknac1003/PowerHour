@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 // This is a class that represents an enemy in the game
 public class Enemy : MonoBehaviour, IDamageable
 {
@@ -44,11 +45,13 @@ public class Enemy : MonoBehaviour, IDamageable
 
     protected Animator animator;
 
-    public Rigidbody rb;
     int smallHitLaunchFactor = 10;
     int bigHitLaunchFactor = 2;
 
     protected bool isDead = false;
+    private List<Rigidbody> rigidbodies = new List<Rigidbody>();
+    [SerializeField] private Collider hitbox;
+
     public virtual void attack()
     {
         return;
@@ -82,7 +85,7 @@ public class Enemy : MonoBehaviour, IDamageable
             animator.SetBool("inCombat", true);
 
             this.transform.rotation = Quaternion.LookRotation(direction);
-            // this.transform.Rotate(0, 60, 0); //rotate extra for fighting stance to line up
+            this.transform.Rotate(0, 60, 0); //rotate extra for fighting stance to line up
 
             if (Time.time > lastAttackTime + attackDelay)
             {
@@ -107,9 +110,9 @@ public class Enemy : MonoBehaviour, IDamageable
 
     public virtual void Init()
     {
-        rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
-
+        target = GameObject.Find("Player");
+        rigidbodies.AddRange(GetComponentsInChildren<Rigidbody>());
         return;
     }
     public virtual void Update()
@@ -146,6 +149,13 @@ public class Enemy : MonoBehaviour, IDamageable
         // Debug.Log("Health: " + currentHealth / maxHealth);
         return currentHealth / maxHealth;
     }
+    private void Die()
+    {
+        Destroy(animator);
+        Destroy(healthBarUI);
+        Destroy(hitbox);
+        Destroy(this);
+    }
 
     public void TakeDamage(float damage)
     {
@@ -157,33 +167,33 @@ public class Enemy : MonoBehaviour, IDamageable
 
             if (currentHealth <= 0)
             {
-                isDead = true;
                 animator.SetTrigger("Die");
                 Destroy(gameObject, 6f);
             }
             else
             {
                 animator.SetTrigger("Hit");
-                Vector3 direction = target.transform.position - this.transform.position;
-                direction.y = 0.5f;
-                if (direction != Vector3.zero)
-                {
-                    direction.Normalize();
-                }
-                if (damage > 10)
-                {
-                    ApplyForce(direction, 100);
-                }
-                else
-                {
-                    ApplyForce(direction, 5);
-                }
+                Vector3 direction = this.transform.position - target.transform.position;
+                direction.y = 0.0f;
             }
         }
     }
+
     private void ApplyForce(Vector3 direction, int launchFactor)
     {
-        rb.AddForce(direction * launchFactor, ForceMode.Impulse);
+        if (direction != Vector3.zero)
+        {
+            direction.Normalize();
+        }
+        Launch(direction, launchFactor);
+    }
+
+    public void Launch(Vector3 direction, int launchFactor)
+    {
+        foreach (Rigidbody rb in rigidbodies)
+        {
+            rb.AddForce(direction * launchFactor, ForceMode.Impulse);
+        }
     }
 
     public void AttackDone()

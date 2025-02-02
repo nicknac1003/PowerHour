@@ -21,6 +21,8 @@ public class WallCutout : MonoBehaviour
         playerRadius = playerController.playerRadius;
 
         playerBounds = new Vector3(-1, 0, -1).normalized * playerRadius; // I only care about X and Z here -- Negative is closest point to camera
+
+        player = GameObject.Find("Player").transform;
     }
 
     private void Update()
@@ -28,7 +30,7 @@ public class WallCutout : MonoBehaviour
         Vector2 cutoutCenter = Camera.main.WorldToViewportPoint(player.position + Vector3.up * playerHeight / 2);
         cutoutCenter.y /= Screen.width / Screen.height;
 
-        foreach(Material material in wallMaterials)
+        foreach (Material material in wallMaterials)
         {
             material.SetVector("_PlayerPosition", player.position);// + playerBounds); // send flat position + bounds to shader to determine depth -- point closest to camera
             material.SetVector("_CutoutCenter", cutoutCenter);

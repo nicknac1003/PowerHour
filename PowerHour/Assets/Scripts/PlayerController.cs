@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour, IDamageable
 {
-    public float maxHP=100;
+    public float maxHP = 100;
     private float _currentHealth;
     private float _maxHealth;
 
@@ -125,7 +125,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         Ray ray = Camera.main.ScreenPointToRay(crosshairScreenPosition);
 
         // Perform the raycast to find where the crosshair hits the floor
-        if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
+        if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, LayerMask.GetMask("Floor")))
         {
             // Get the point where the raycast hits the floor
             Vector3 floorHitPoint = hit.point;
@@ -154,6 +154,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         accelerationMagnitude = acceleration.magnitude;
 
         Vector3 actualDisplacement = CollideAndSlide(transform.position, velocity * Time.fixedDeltaTime);
+        actualDisplacement.y = 0;
 
         _ = CollideAndSlide(transform.position, velocity); // debug draw
 
