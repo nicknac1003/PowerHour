@@ -14,13 +14,22 @@ public class PlayerAnimationController : MonoBehaviour
     [SerializeField] private Collider rightHandCollider;
     [SerializeField] private Collider leftHandCollider;
     [SerializeField] private Collider leftFootCollider;
+
+    [Header("Audio Clips")]
+    [SerializeField] private AudioClip punchSound;
+    [SerializeField] private AudioClip punchHitSound;
+    [SerializeField] private AudioClip kickSound;
+    [SerializeField] private AudioClip kickHitSound;
+
     private float timeUntilNextPunch = 0.0f;
+    private AudioSource audioSource;
 
     int VelocityHash;
     void Start()
     {
         VelocityHash = Animator.StringToHash("Velocity");
         animator.SetFloat("AnimSpeed", punchAnimSpeed);
+        audioSource = GetComponent<AudioSource>();
 
         rightHandCollider.enabled = false;
         leftHandCollider.enabled = false;
@@ -111,5 +120,26 @@ public class PlayerAnimationController : MonoBehaviour
         animator.SetTrigger("KickOver");
         animator.SetBool("CanStartCombo", false);
         timeUntilNextPunch = punchCooldown;
+    }
+
+    public void PlayPunchSound()
+    {
+        audioSource.clip = punchSound;
+        audioSource.Play();
+    }
+    public void PlayPunchHitSound()
+    {
+        audioSource.clip = punchHitSound;
+        audioSource.Play();
+    }
+    public void PlayKickSound()
+    {
+        audioSource.clip = kickSound;
+        audioSource.Play();
+    }
+    public void PlayKickHitSound()
+    {
+        audioSource.clip = kickHitSound;
+        audioSource.Play();
     }
 }

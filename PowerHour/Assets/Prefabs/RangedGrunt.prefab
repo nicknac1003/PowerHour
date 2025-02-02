@@ -1304,7 +1304,7 @@ MonoBehaviour:
   attackDelay: 2
   healthBarUI: {fileID: 540023822305288099}
   healthBar: {fileID: 2347961935652980942}
-  hitbox: {fileID: 0}
+  hitbox: {fileID: 4368090331449873296}
   _currhp: 30
   _maxhp: 30
   holdParent: {fileID: 2784618437303141}
