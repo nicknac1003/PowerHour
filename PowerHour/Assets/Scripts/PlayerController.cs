@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class FPSController : MonoBehaviour, IDamageable
+public class PlayerController : MonoBehaviour, IDamageable
 {
     public float maxHP = 100;
     private float _currentHealth;

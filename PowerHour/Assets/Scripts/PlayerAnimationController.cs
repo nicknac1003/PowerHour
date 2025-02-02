@@ -3,7 +3,7 @@ using System.Collections;
 public class PlayerAnimationController : MonoBehaviour
 {
     [SerializeField] private Animator animator;
-    [SerializeField] private FPSController playerController;
+    [SerializeField] private PlayerController playerController;
 
     [Header("Animation Properties")]
     [SerializeField] private float punchAnimSpeed = 1.0f;

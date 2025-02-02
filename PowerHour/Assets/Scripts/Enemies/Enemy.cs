@@ -47,6 +47,8 @@ public class Enemy : MonoBehaviour, IDamageable
 
     int smallHitLaunchFactor = 10;
     int bigHitLaunchFactor = 2;
+
+    protected bool isDead = false;
     private List<Rigidbody> rigidbodies = new List<Rigidbody>();
     [SerializeField] private Collider hitbox;
 
@@ -83,7 +85,7 @@ public class Enemy : MonoBehaviour, IDamageable
             animator.SetBool("inCombat", true);
 
             this.transform.rotation = Quaternion.LookRotation(direction);
-            //this.transform.Rotate(0, 60, 0); //rotate extra for fighting stance to line up
+            this.transform.Rotate(0, 60, 0); //rotate extra for fighting stance to line up
 
             if (Time.time > lastAttackTime + attackDelay)
             {
@@ -97,6 +99,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
     public void Start()
     {
+        Debug.Log(target.transform.position);
         mainCamera = Camera.main;
         if (healthBarUI != null)
         {
@@ -134,8 +137,10 @@ public class Enemy : MonoBehaviour, IDamageable
             healthBarUI.transform.LookAt(mainCamera.transform);
             healthBarUI.transform.Rotate(0, 180, 0);
         }
-
-        move();
+        if (!isDead)
+        {
+            move();
+        }
 
     }
 
@@ -162,8 +167,8 @@ public class Enemy : MonoBehaviour, IDamageable
 
             if (currentHealth <= 0)
             {
-                Die();
-                //Destroy(gameObject, 6f);
+                animator.SetTrigger("Die");
+                Destroy(gameObject, 6f);
             }
             else
             {
@@ -195,5 +200,10 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         // Debug.Log("Attack done");
         attacking = false;
+    }
+    public void AttackStart()
+    {
+        // Debug.Log("Attack start");
+        attacking = true;
     }
 }

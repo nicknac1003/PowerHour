@@ -23,7 +23,6 @@ public class FistCollision : MonoBehaviour
     {
         if (other.gameObject.tag == "Player Hitbox")
         {
-            Debug.Log("Enemy hit something");
             other.gameObject.GetComponentInParent<PlayerAnimationController>().TakeDamage(damage);
         }
     }
