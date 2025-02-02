@@ -297,4 +297,13 @@ public class PlayerController : MonoBehaviour, IDamageable
             buff.Activate();
         }
     }
+
+    public void Heal(float amount)
+    {
+        currentHealth += amount;
+        if (currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+    }
 }

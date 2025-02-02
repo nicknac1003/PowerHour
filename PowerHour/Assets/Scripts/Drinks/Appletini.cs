@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Buffs/Appletini", fileName="Appletini", order = 0)]
+[CreateAssetMenu(menuName = "Buffs/Appletini")]
 public class Appletini : ScriptableBuff
 {
     public override TimedBuff InitializeBuff(GameObject obj)
