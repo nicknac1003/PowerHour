@@ -190,9 +190,9 @@ GameObject:
   - component: {fileID: 4090089280455143108}
   - component: {fileID: 3208954990489307467}
   - component: {fileID: 5895112693741715768}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: RightHandHurtbox
-  m_TagString: Untagged
+  m_TagString: EnemyHurtCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -710,15 +710,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cac5b282379b87247a34f645d6ae8dcf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.81749105
+      value: 1.6685739
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cac5b282379b87247a34f645d6ae8dcf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.00000047683716
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cac5b282379b87247a34f645d6ae8dcf, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.7045372
+      value: -2.5412717
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cac5b282379b87247a34f645d6ae8dcf, type: 3}
       propertyPath: m_LocalRotation.w
