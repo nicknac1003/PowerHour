@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.AI;
 // This is a class that represents a basic melee enemy in the game
 public class RangedGrunt : Enemy
 {
@@ -10,7 +10,9 @@ public class RangedGrunt : Enemy
     public GameObject holdParent;
     public GameObject projectile;
     public GameObject holding;
-    public override void Init(){
+    [SerializeField] NavMeshAgent agent;
+    public override void Init()
+    {
         base.Init();
         id = "RangedGrunt";
         maxHealth = _maxhp;
@@ -35,15 +37,18 @@ public class RangedGrunt : Enemy
         }
     }
 
-    public override void Update(){
+    public override void Update()
+    {
         base.Update();
-        if (lastAttackTime + reloadTime < Time.time && holding == null){
+        if (lastAttackTime + reloadTime < Time.time && holding == null)
+        {
             // Debug.Log("Reloading");
             reload();
         }
     }
 
-    public void reload(){
+    public void reload()
+    {
         holding = Instantiate(projectile, holdParent.transform.position, holdParent.transform.rotation);
         holding.transform.parent = holdParent.transform;
         // holding.GetComponent<bottle>().holdPoint = holdParent.transform;
@@ -55,18 +60,15 @@ public class RangedGrunt : Enemy
         float distanceToPlayer = Vector3.Distance(this.transform.position, target.transform.position);
         Vector3 direction = target.transform.position - this.transform.position;
         direction.y = 0;
-        if (distanceToPlayer > range)
+        if (distanceToPlayer > range || WillThrowAtWall())
         {
-            Debug.Log(!attacking);
             if (!isHit && !attacking)
             {
                 animator.SetBool("isWalking", true);
                 animator.SetBool("inCombat", false);
                 //look at player without looking up or down
 
-                this.transform.rotation = Quaternion.LookRotation(direction);
-
-                this.transform.position = Vector3.MoveTowards(this.transform.position, this.transform.position + transform.forward, speed * Time.deltaTime);
+                agent.SetDestination(target.transform.position);
             }
             else if (Time.time > lastHitTime + hitDelay)
             {
@@ -75,6 +77,7 @@ public class RangedGrunt : Enemy
         }
         else
         {
+            agent.SetDestination(this.transform.position);
             animator.SetBool("isWalking", false);
             bool enterCombat = !animator.GetBool("inCombat");
             animator.SetBool("inCombat", true);
@@ -92,8 +95,22 @@ public class RangedGrunt : Enemy
         }
     }
 
-    public void release(){
-        if (holding != null){
+    private bool WillThrowAtWall()
+    {
+        // if no wall in between, return false
+        RaycastHit hit;
+
+        if (Physics.Raycast(holdParent.transform.position, target.transform.position - holdParent.transform.position, out hit, range, LayerMask.GetMask("Wall")))
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public void release()
+    {
+        if (holding != null)
+        {
 
             holding.transform.parent = null;
             holding.GetComponent<Rigidbody>().isKinematic = false;
@@ -107,7 +124,7 @@ public class RangedGrunt : Enemy
             float angle = 45f;
             Vector3 velocity = calcVelocity(targetThrow, 10f);
             holding.GetComponent<Rigidbody>().linearVelocity = velocity;
-            
+
             //apply random spin force
             holding.GetComponent<Rigidbody>().AddTorque(Random.insideUnitSphere * 10, ForceMode.Impulse);
             holding = null;
@@ -115,7 +132,7 @@ public class RangedGrunt : Enemy
     }
 
     public Vector3 calcVelocity(Vector3 target, float speed)
-    {  
+    {
 
         // Calculate direction to target but ignore the y component to only rotate on the X and Z axes
         Vector3 directionToTargetFlat = target - holding.transform.position;
@@ -134,11 +151,12 @@ public class RangedGrunt : Enemy
 
         // Set up the terms we need to solve the quadratic equations.
         float gSquared = Physics.gravity.sqrMagnitude;
-        float b = speed * speed + Vector3.Dot(toTarget, Physics.gravity);    
+        float b = speed * speed + Vector3.Dot(toTarget, Physics.gravity);
         float discriminant = b * b - gSquared * toTarget.sqrMagnitude;
 
         // Check whether the target is reachable at max speed or less.
-        if(discriminant < 0) {
+        if (discriminant < 0)
+        {
             // Target is too far away to hit at this speed.
             // Abort, or fire at max speed in its general direction?
             Debug.Log("Abort!");
@@ -153,16 +171,16 @@ public class RangedGrunt : Enemy
         float T_min = Mathf.Sqrt((b - discRoot) * 2f / gSquared);
 
         // Lowest-speed arc available:
-        float T_lowEnergy = Mathf.Sqrt(Mathf.Sqrt(toTarget.sqrMagnitude * 4f/gSquared));
-        
+        float T_lowEnergy = Mathf.Sqrt(Mathf.Sqrt(toTarget.sqrMagnitude * 4f / gSquared));
+
         // Given max distance = 10, the closer the target, T is closer to T_min and vice versa
-        float T = (toTarget.magnitude/10 * (T_max - T_min))/4 + T_min;
+        float T = (toTarget.magnitude / 10 * (T_max - T_min)) / 4 + T_min;
 
         // Convert from time-to-hit to a launch velocity:
         Vector3 velocity = toTarget / T - Physics.gravity * T / 2f;
 
         // Apply the calculated velocity (do not use force, acceleration, or impulse modes)
         return velocity;
-    
+
     }
 }

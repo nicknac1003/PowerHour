@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.AI;
 // This is a class that represents a basic melee enemy in the game
 public class MeleeGrunt : Enemy
 {
@@ -10,6 +10,8 @@ public class MeleeGrunt : Enemy
     public Transform attackPoint;
 
     public int damage = 25;
+
+    [SerializeField] NavMeshAgent agent;
 
     [Header("Player Dammage Colliders")]
     [SerializeField] private Collider rightHandCollider;
@@ -64,9 +66,7 @@ public class MeleeGrunt : Enemy
                 animator.SetBool("inCombat", false);
                 //look at player without looking up or down
 
-                this.transform.rotation = Quaternion.LookRotation(direction);
-
-                this.transform.position = Vector3.MoveTowards(this.transform.position, this.transform.position + transform.forward, speed * Time.deltaTime);
+                agent.SetDestination(target.transform.position);
             }
             else if (Time.time > lastHitTime + hitDelay)
             {
@@ -75,6 +75,7 @@ public class MeleeGrunt : Enemy
         }
         else
         {
+            agent.SetDestination(this.transform.position);
             animator.SetBool("isWalking", false);
             bool enterCombat = !animator.GetBool("inCombat");
             animator.SetBool("inCombat", true);
