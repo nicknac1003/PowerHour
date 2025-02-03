@@ -150,7 +150,7 @@ public class Enemy : MonoBehaviour, IDamageable
         // Debug.Log("Health: " + currentHealth / maxHealth);
         return currentHealth / maxHealth;
     }
-    private void Die()
+    public virtual void Die()
     {
         Destroy(animator);
         Destroy(healthBarUI);
