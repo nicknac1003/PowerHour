@@ -519,15 +519,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9f1529c67d03a6a4b9194e06ccefc0b3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.42
+      value: -5.2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9f1529c67d03a6a4b9194e06ccefc0b3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.0000009536743
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9f1529c67d03a6a4b9194e06ccefc0b3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 7.14
+      value: -5.53
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9f1529c67d03a6a4b9194e06ccefc0b3, type: 3}
       propertyPath: m_LocalRotation.w
@@ -617,6 +617,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9f1529c67d03a6a4b9194e06ccefc0b3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 125375573003029582}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9f1529c67d03a6a4b9194e06ccefc0b3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5189672293698806445}
     - targetCorrespondingSourceObject: {fileID: -8699787447509501512, guid: 9f1529c67d03a6a4b9194e06ccefc0b3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 31903849778586175}
@@ -738,8 +741,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.09376222
-  m_Center: {x: 0, y: 0.09376222, z: 0}
+  m_Radius: 0.002
+  m_Center: {x: 0, y: 0.001, z: 0}
 --- !u!54 &6648296017578270501
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1301,7 +1304,7 @@ MonoBehaviour:
   id: 
   target: {fileID: 1535059269287794238, guid: aa2f210b5a72b4f49837ee023353a5c2, type: 3}
   hitDelay: 0.1
-  attackDelay: 2
+  attackDelay: 3.5
   healthBarUI: {fileID: 540023822305288099}
   healthBar: {fileID: 2347961935652980942}
   hitbox: {fileID: 4368090331449873296}
@@ -1310,7 +1313,30 @@ MonoBehaviour:
   holdParent: {fileID: 2784618437303141}
   projectile: {fileID: 8402855364967069145, guid: 478f7854a66ce724a9b995b45679400e, type: 3}
   holding: {fileID: 0}
+  agent: {fileID: 5189672293698806445}
   reloadTime: 2
+--- !u!195 &5189672293698806445
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4350056438592771204}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &4581997163338199934 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -8139853090755257685, guid: 9f1529c67d03a6a4b9194e06ccefc0b3, type: 3}
