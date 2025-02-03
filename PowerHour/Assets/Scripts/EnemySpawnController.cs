@@ -21,6 +21,7 @@ public class EnemySpawnController : MonoBehaviour
 
     public int currentWave = 0;
 
+    private Wave defaultWave = new Wave(20, 10, 2f);
     void Start()
     {
         //get all gameobjects with tag EnemySpawner
@@ -36,7 +37,14 @@ public class EnemySpawnController : MonoBehaviour
 
         if (waveStarted)
         {
-            Wave currWave = waves[currentWave];
+            Wave currentWave;
+            if (currentWave >= waves.Count)
+            {
+                currentWave = defaultWave;
+            } else 
+            {
+                currentWave = waves[currentWave];
+            }
             if (currentEnemies < currWave.maxEnemies && Time.time - lastSpawnTime > currWave.spawnInterval)
             {
                 SpawnEnemy();
@@ -117,4 +125,10 @@ public class Wave {
     public int maxEnemies;
     public float spawnInterval;
 
+    public Wave(int cost, int maxEnemies, float spawnInterval)
+    {
+        this.cost = cost;
+        this.maxEnemies = maxEnemies;
+        this.spawnInterval = spawnInterval;
+    }
 }
