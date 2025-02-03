@@ -25505,6 +25505,10 @@ PrefabInstance:
       propertyPath: damage
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 5785661569825311363, guid: aa2f210b5a72b4f49837ee023353a5c2, type: 3}
+      propertyPath: damage
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5801244469858383123, guid: aa2f210b5a72b4f49837ee023353a5c2, type: 3}
       propertyPath: crosshair
       value: 
@@ -25513,6 +25517,14 @@ PrefabInstance:
       propertyPath: healthBarUI
       value: 
       objectReference: {fileID: 1443768003}
+    - target: {fileID: 6689102554403567273, guid: aa2f210b5a72b4f49837ee023353a5c2, type: 3}
+      propertyPath: damage
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7079969157666428464, guid: aa2f210b5a72b4f49837ee023353a5c2, type: 3}
+      propertyPath: damage
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 7809031264638729152, guid: aa2f210b5a72b4f49837ee023353a5c2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -25554,7 +25566,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 98785117976812067, guid: aa2f210b5a72b4f49837ee023353a5c2, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa2f210b5a72b4f49837ee023353a5c2, type: 3}
