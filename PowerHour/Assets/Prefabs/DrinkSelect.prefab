@@ -986,8 +986,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fa0ae1c81a19a134ab745bf456be836c, type: 2}
   drinkOptions:
   - {fileID: 8236964655774787546}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 5055750475795237230}
+  - {fileID: 706403905086345117}
 --- !u!1 &2602027074943694524
 GameObject:
   m_ObjectHideFlags: 0
