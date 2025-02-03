@@ -189,7 +189,6 @@ GameObject:
   - component: {fileID: 3812071378123946837}
   - component: {fileID: 4090089280455143108}
   - component: {fileID: 3208954990489307467}
-  - component: {fileID: 5895112693741715768}
   m_Layer: 9
   m_Name: RightHandHurtbox
   m_TagString: EnemyHurtCollider
@@ -274,18 +273,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &5895112693741715768
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1978461674658697696}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6c0db7669f45664a9b47c950703f247, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2133582603956298397
 GameObject:
   m_ObjectHideFlags: 0
@@ -534,7 +521,6 @@ GameObject:
   - component: {fileID: 1829530093767035937}
   - component: {fileID: 5410634922588960094}
   - component: {fileID: 4953191778533834291}
-  - component: {fileID: 3374180853859402313}
   m_Layer: 9
   m_Name: LeftHandHurtbox
   m_TagString: EnemyHurtCollider
@@ -619,18 +605,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &3374180853859402313
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4306166819237898561}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6c0db7669f45664a9b47c950703f247, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5178381336613400182
 GameObject:
   m_ObjectHideFlags: 0
