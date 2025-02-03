@@ -36,9 +36,11 @@ public class GameManager : MonoBehaviour
     {
         if (enemySpawnController.waveEnded)
         {
+            
             waveStarted = false;
             if (!drinking)
             {
+                currentWave = enemySpawnController.currentWave;
                 drinking = true;
                 drinkSelector.showDrinks();
             }
@@ -58,7 +60,7 @@ public class GameManager : MonoBehaviour
     {
         drinkSelector.hideDrinks();
         StartWave();
-
+        
 
     }
 
