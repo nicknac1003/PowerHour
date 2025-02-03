@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public GameObject player;
@@ -35,6 +35,11 @@ public class GameManager : MonoBehaviour
                 drinkSelector.showDrinks();
             }
 
+        }
+        if (player.GetComponent<PlayerController>().isDead)
+        {
+            Debug.Log("Player is dead");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
 
     }

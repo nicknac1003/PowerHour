@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     public float currentHealth { get { return _currentHealth; } set { _currentHealth = value; } }
     public float maxHealth { get { return _maxHealth; } set { _maxHealth = value; } }
-
+    public bool isDead = false;
     [SerializeField] private PlayerInput playerInput;
     [SerializeField] private PlayerAnimationController playerAnimationController;
     [SerializeField] Transform crosshair;
@@ -281,6 +281,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         Debug.Log("Player took " + damage + " damage. Current health: " + currentHealth);
         if (currentHealth <= 0)
         {
+            isDead = true;
             Die();
         }
     }
