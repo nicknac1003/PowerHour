@@ -176,6 +176,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         if(Physics.Raycast(Camera.main.ScreenPointToRay(crosshair.position), out RaycastHit hit, Mathf.Infinity, LayerMask.GetMask("Floor")))
         {
             crosshairWorldPosition = new Vector3(hit.point.x, 0, hit.point.z); // ALWAYS on floor level (Y = 0)
+            return;
         }
 
         Debug.LogWarning("Crosshair did not hit collider!");
@@ -237,7 +238,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         }
 
         // Shoot capsule cast and see if displacement will cause collision - return displacement if no collision
-        if (Physics.CapsuleCast(origin + Vector3.up * playerRadius, origin + Vector3.up * (playerHeight - playerRadius), skinnyRadius, displacement.normalized, out RaycastHit hit, displacement.magnitude + skinWidth) == false)
+        if (Physics.CapsuleCast(origin + Vector3.up * playerRadius, origin + Vector3.up * (playerHeight - playerRadius), skinnyRadius, displacement.normalized, out RaycastHit hit, displacement.magnitude + skinWidth, LayerMask.GetMask("Wall")) == false)
         {
             Debug.DrawLine(origin, origin + displacement, Color.blue, Time.fixedDeltaTime);
             return displacement;
