@@ -682,7 +682,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1.94, z: 0.42}
+  m_Size: {x: 1, y: 1.94, z: 0.56}
   m_Center: {x: 0, y: 1.03, z: -0.11}
 --- !u!1001 &8869059801035902369
 PrefabInstance:
@@ -2902,6 +2902,7 @@ MonoBehaviour:
   healthBarUI: {fileID: 188672399412880614}
   healthBar: {fileID: 5891826515989068271}
   hitbox: {fileID: 3387022736416914867}
+  EnemySpawnController: {fileID: 0}
   _currhp: 15
   _maxhp: 15
   attackPoint: {fileID: 0}
