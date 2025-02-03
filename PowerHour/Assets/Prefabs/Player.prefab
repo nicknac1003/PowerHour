@@ -605,7 +605,7 @@ MonoBehaviour:
   verticalScale: 1
   mouseSensitivityHorizontal: 1
   mouseSensitivityVertical: 1
-  walkSpeed: 9
+  walkSpeed: 4
   dashSpeed: 0
   turnSpeed: 1000
   playerHeight: 2
@@ -617,6 +617,7 @@ MonoBehaviour:
   velocityMagnitude: 4e-45
   accelerationMagnitude: 0
   currentlyPunching: 0
+  healthBarUI: {fileID: 4532960572375414242, guid: c4b522025ec3baa44a3266b12cbc934f, type: 3}
 --- !u!114 &9175745075659555926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2439,7 +2440,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.49196666, y: 0.24213055, z: 0.1604811, w: 0.82072365}
   m_LocalPosition: {x: 0.000000011175871, y: 0.12922284, z: -0.000000063329935}
-  m_LocalScale: {x: 1.5, y: 2, z: 1.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1384657960765902892}
