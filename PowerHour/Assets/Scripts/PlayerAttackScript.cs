@@ -21,7 +21,7 @@ public class PlayerAttackScript : MonoBehaviour
         // get tag of the object that is doign the hitting
         if (other.gameObject.tag == "Enemy Hitbox")
         {
-            other.gameObject.GetComponentInParent<Enemy>().TakeDamage(damage);
+            other.gameObject.GetComponentInParent<IDamageable>().TakeDamage(damage);
 
             if (hitType == HitType.Punch)
             {
@@ -31,6 +31,10 @@ public class PlayerAttackScript : MonoBehaviour
             {
                 playerAnimationController.PlayKickHitSound();
             }
+        }
+        if (other.gameObject.tag == "jukebox")
+        {
+            other.gameObject.GetComponent<Jukebox>().RotateSong();
         }
     }
 
