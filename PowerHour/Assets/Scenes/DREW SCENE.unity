@@ -267,6 +267,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall_Plaster (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 8508961707427148958, guid: 1276132a81daa99449cfc751ec9075c2, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 9033718632049864228, guid: 1276132a81daa99449cfc751ec9075c2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 10.1
@@ -531,6 +535,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall_Plaster (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 8508961707427148958, guid: 1276132a81daa99449cfc751ec9075c2, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 9033718632049864228, guid: 1276132a81daa99449cfc751ec9075c2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 11.399989
@@ -644,6 +652,10 @@ PrefabInstance:
     - target: {fileID: 1967871191325503919, guid: e5182029b39d09443ac86306d2a8b6f3, type: 3}
       propertyPath: m_Name
       value: Wall_Brick (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1967871191325503919, guid: e5182029b39d09443ac86306d2a8b6f3, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1578,6 +1590,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Props_Interior_Generic_Warehouse_Pallet (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5167443354534652804, guid: 068c39885c2d26247924b8b07aa0c190, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 5547769497148846398, guid: 068c39885c2d26247924b8b07aa0c190, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.1
@@ -2062,6 +2078,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Props_City_Park_Fence (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 8779081136423069436, guid: 4dba5dcaae6f65641bcb3d83f66ffc24, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2368,6 +2388,10 @@ PrefabInstance:
     - target: {fileID: 8822813825365383170, guid: 14985dcf9ae902945b903f9c6001385e, type: 3}
       propertyPath: m_Name
       value: SM_Props_City_Park_Fence_Column_02 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8822813825365383170, guid: 14985dcf9ae902945b903f9c6001385e, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2728,6 +2752,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Props_City_Park_Fence (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 8779081136423069436, guid: 4dba5dcaae6f65641bcb3d83f66ffc24, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2856,6 +2884,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Props_City_Park_Fence (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 8779081136423069436, guid: 4dba5dcaae6f65641bcb3d83f66ffc24, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2884,6 +2916,10 @@ PrefabInstance:
     - target: {fileID: 8508961707427148958, guid: 1276132a81daa99449cfc751ec9075c2, type: 3}
       propertyPath: m_Name
       value: Wall_Plaster (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8508961707427148958, guid: 1276132a81daa99449cfc751ec9075c2, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 9033718632049864228, guid: 1276132a81daa99449cfc751ec9075c2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2998,6 +3034,10 @@ PrefabInstance:
     - target: {fileID: 1967871191325503919, guid: e5182029b39d09443ac86306d2a8b6f3, type: 3}
       propertyPath: m_Name
       value: Wall_Brick (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1967871191325503919, guid: e5182029b39d09443ac86306d2a8b6f3, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3218,6 +3258,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Props_City_Park_Fence (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 8779081136423069436, guid: 4dba5dcaae6f65641bcb3d83f66ffc24, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3282,6 +3326,10 @@ PrefabInstance:
     - target: {fileID: 1967871191325503919, guid: c6a2fe8cc07f77541b745a079da111fe, type: 3}
       propertyPath: m_Name
       value: Wall_Tile (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1967871191325503919, guid: c6a2fe8cc07f77541b745a079da111fe, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3654,6 +3702,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bar_Wall_Door_Left
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2cb956b4ece07394b9f2cb957aca4ed6, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3919,6 +3971,10 @@ PrefabInstance:
     - target: {fileID: 6558102995472244298, guid: ab38d0edbf6f6ad4c8330a4f1cf16fd3, type: 3}
       propertyPath: m_Name
       value: Wall_Plaster_Window (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6558102995472244298, guid: ab38d0edbf6f6ad4c8330a4f1cf16fd3, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4965,6 +5021,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bar_Wall_Door_Left (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2cb956b4ece07394b9f2cb957aca4ed6, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5385,6 +5445,10 @@ PrefabInstance:
     - target: {fileID: 8822813825365383170, guid: 14985dcf9ae902945b903f9c6001385e, type: 3}
       propertyPath: m_Name
       value: SM_Props_City_Park_Fence_Column_02 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8822813825365383170, guid: 14985dcf9ae902945b903f9c6001385e, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6380,6 +6444,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall_Brick_Window (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 8076303311520287282, guid: 2caeaac27f6f65c47a4715936da8c79e, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 8889854695662293128, guid: 2caeaac27f6f65c47a4715936da8c79e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5
@@ -6638,7 +6706,7 @@ GameObject:
   - component: {fileID: 383637261}
   - component: {fileID: 383637260}
   - component: {fileID: 383637259}
-  m_Layer: 8
+  m_Layer: 13
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7282,6 +7350,10 @@ PrefabInstance:
     - target: {fileID: 8076303311520287282, guid: 2caeaac27f6f65c47a4715936da8c79e, type: 3}
       propertyPath: m_Name
       value: Wall_Brick_Window (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8076303311520287282, guid: 2caeaac27f6f65c47a4715936da8c79e, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 8889854695662293128, guid: 2caeaac27f6f65c47a4715936da8c79e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8972,7 +9044,7 @@ GameObject:
   - component: {fileID: 494882751}
   - component: {fileID: 494882750}
   - component: {fileID: 494882749}
-  m_Layer: 8
+  m_Layer: 13
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9119,6 +9191,10 @@ PrefabInstance:
     - target: {fileID: 8822813825365383170, guid: 14985dcf9ae902945b903f9c6001385e, type: 3}
       propertyPath: m_Name
       value: SM_Props_City_Park_Fence_Column_02 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8822813825365383170, guid: 14985dcf9ae902945b903f9c6001385e, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9729,7 +9805,7 @@ GameObject:
   - component: {fileID: 518502351}
   - component: {fileID: 518502350}
   - component: {fileID: 518502349}
-  m_Layer: 8
+  m_Layer: 13
   m_Name: Cube (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9876,6 +9952,10 @@ PrefabInstance:
     - target: {fileID: 8822813825365383170, guid: 14985dcf9ae902945b903f9c6001385e, type: 3}
       propertyPath: m_Name
       value: SM_Props_City_Park_Fence_Column_02 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8822813825365383170, guid: 14985dcf9ae902945b903f9c6001385e, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10147,6 +10227,10 @@ PrefabInstance:
     - target: {fileID: 8508961707427148958, guid: 1276132a81daa99449cfc751ec9075c2, type: 3}
       propertyPath: m_Name
       value: Wall_Plaster (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8508961707427148958, guid: 1276132a81daa99449cfc751ec9075c2, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 9033718632049864228, guid: 1276132a81daa99449cfc751ec9075c2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11965,6 +12049,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Props_City_Park_Fence_Column_02 (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 8822813825365383170, guid: 14985dcf9ae902945b903f9c6001385e, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12398,6 +12486,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7732786816565609785, guid: 020b831f7ff2f974e85a84996f5f15e0, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 8145682699839320552, guid: 020b831f7ff2f974e85a84996f5f15e0, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -12766,6 +12858,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 2cb956b4ece07394b9f2cb957aca4ed6, type: 3}
       propertyPath: m_Name
       value: Bar_Wall_Door_Left (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2cb956b4ece07394b9f2cb957aca4ed6, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13381,6 +13477,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Props_City_Park_Fence (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 8779081136423069436, guid: 4dba5dcaae6f65641bcb3d83f66ffc24, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13875,6 +13975,10 @@ PrefabInstance:
     - target: {fileID: 1967871191325503919, guid: c6a2fe8cc07f77541b745a079da111fe, type: 3}
       propertyPath: m_Name
       value: Wall_Tile (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1967871191325503919, guid: c6a2fe8cc07f77541b745a079da111fe, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14562,6 +14666,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Props_City_Park_Fence (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8779081136423069436, guid: 4dba5dcaae6f65641bcb3d83f66ffc24, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15170,17 +15278,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0b3edcb6569b53347af2c53ec5c71ea9, type: 3}
   m_PrefabInstance: {fileID: 781167417}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &782375534 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4121181490525960611, guid: aa2f210b5a72b4f49837ee023353a5c2, type: 3}
-  m_PrefabInstance: {fileID: 1375429810}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1375429812}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c3a331afdd4e2d4eb13743851fd9c66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &782375537 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7809031264638729152, guid: aa2f210b5a72b4f49837ee023353a5c2, type: 3}
@@ -15252,6 +15349,10 @@ PrefabInstance:
     - target: {fileID: 8822813825365383170, guid: 14985dcf9ae902945b903f9c6001385e, type: 3}
       propertyPath: m_Name
       value: SM_Props_City_Park_Fence_Column_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 8822813825365383170, guid: 14985dcf9ae902945b903f9c6001385e, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -15798,6 +15899,10 @@ PrefabInstance:
     - target: {fileID: 8779081136423069436, guid: 4dba5dcaae6f65641bcb3d83f66ffc24, type: 3}
       propertyPath: m_Name
       value: SM_Props_City_Park_Fence (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8779081136423069436, guid: 4dba5dcaae6f65641bcb3d83f66ffc24, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -17169,6 +17274,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall_Plaster (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8508961707427148958, guid: 1276132a81daa99449cfc751ec9075c2, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 9033718632049864228, guid: 1276132a81daa99449cfc751ec9075c2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6
@@ -17274,6 +17383,10 @@ PrefabInstance:
     - target: {fileID: 8779081136423069436, guid: 4dba5dcaae6f65641bcb3d83f66ffc24, type: 3}
       propertyPath: m_Name
       value: SM_Props_City_Park_Fence (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8779081136423069436, guid: 4dba5dcaae6f65641bcb3d83f66ffc24, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -17463,7 +17576,7 @@ GameObject:
   - component: {fileID: 925636528}
   - component: {fileID: 925636527}
   - component: {fileID: 925636526}
-  m_Layer: 8
+  m_Layer: 13
   m_Name: Cube (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19440,6 +19553,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall_Tile (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 1967871191325503919, guid: c6a2fe8cc07f77541b745a079da111fe, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -20656,7 +20773,7 @@ GameObject:
   - component: {fileID: 1111612474}
   - component: {fileID: 1111612473}
   - component: {fileID: 1111612472}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21156,6 +21273,10 @@ PrefabInstance:
     - target: {fileID: 1967871191325503919, guid: e5182029b39d09443ac86306d2a8b6f3, type: 3}
       propertyPath: m_Name
       value: Wall_Brick (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1967871191325503919, guid: e5182029b39d09443ac86306d2a8b6f3, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -21763,6 +21884,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Props_City_Park_Fence_Column_02 (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 8822813825365383170, guid: 14985dcf9ae902945b903f9c6001385e, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -21780,7 +21905,7 @@ GameObject:
   - component: {fileID: 1138203113}
   - component: {fileID: 1138203112}
   - component: {fileID: 1138203111}
-  m_Layer: 8
+  m_Layer: 13
   m_Name: Cube (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23119,6 +23244,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall_Brick (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1967871191325503919, guid: e5182029b39d09443ac86306d2a8b6f3, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -24038,6 +24167,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall_Plaster (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 8508961707427148958, guid: 1276132a81daa99449cfc751ec9075c2, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 9033718632049864228, guid: 1276132a81daa99449cfc751ec9075c2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 11.399998
@@ -24255,6 +24388,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 2cb956b4ece07394b9f2cb957aca4ed6, type: 3}
       propertyPath: m_Name
       value: Bar_Wall_Door_Left (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2cb956b4ece07394b9f2cb957aca4ed6, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -24701,7 +24838,7 @@ GameObject:
   - component: {fileID: 1342326391}
   - component: {fileID: 1342326390}
   - component: {fileID: 1342326389}
-  m_Layer: 8
+  m_Layer: 13
   m_Name: Cube (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25024,6 +25161,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall_Plaster
       objectReference: {fileID: 0}
+    - target: {fileID: 8508961707427148958, guid: 1276132a81daa99449cfc751ec9075c2, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 9033718632049864228, guid: 1276132a81daa99449cfc751ec9075c2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4
@@ -25274,6 +25415,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Props_City_Park_Fence_Column_02 (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 8822813825365383170, guid: 14985dcf9ae902945b903f9c6001385e, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -25365,49 +25510,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 61181073}
     - target: {fileID: 5801244469858383123, guid: aa2f210b5a72b4f49837ee023353a5c2, type: 3}
-      propertyPath: walkSpeed
-      value: 3.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5801244469858383123, guid: aa2f210b5a72b4f49837ee023353a5c2, type: 3}
-      propertyPath: cameraSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5801244469858383123, guid: aa2f210b5a72b4f49837ee023353a5c2, type: 3}
       propertyPath: healthBarUI
       value: 
       objectReference: {fileID: 1443768003}
-    - target: {fileID: 5801244469858383123, guid: aa2f210b5a72b4f49837ee023353a5c2, type: 3}
-      propertyPath: crosshairPos
-      value: 
-      objectReference: {fileID: 61181073}
-    - target: {fileID: 5801244469858383123, guid: aa2f210b5a72b4f49837ee023353a5c2, type: 3}
-      propertyPath: verticalScale
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5801244469858383123, guid: aa2f210b5a72b4f49837ee023353a5c2, type: 3}
-      propertyPath: cameraOffset.x
-      value: -9
-      objectReference: {fileID: 0}
-    - target: {fileID: 5801244469858383123, guid: aa2f210b5a72b4f49837ee023353a5c2, type: 3}
-      propertyPath: cameraOffset.y
-      value: 9.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5801244469858383123, guid: aa2f210b5a72b4f49837ee023353a5c2, type: 3}
-      propertyPath: cameraOffset.z
-      value: -9
-      objectReference: {fileID: 0}
-    - target: {fileID: 5801244469858383123, guid: aa2f210b5a72b4f49837ee023353a5c2, type: 3}
-      propertyPath: crosshairWeight
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 5801244469858383123, guid: aa2f210b5a72b4f49837ee023353a5c2, type: 3}
-      propertyPath: maxCrosshairDistance
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5801244469858383123, guid: aa2f210b5a72b4f49837ee023353a5c2, type: 3}
-      propertyPath: playerAnimationController
-      value: 
-      objectReference: {fileID: 782375534}
     - target: {fileID: 7809031264638729152, guid: aa2f210b5a72b4f49837ee023353a5c2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -26478,6 +26583,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall_Brick_Window (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8076303311520287282, guid: 2caeaac27f6f65c47a4715936da8c79e, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 8889854695662293128, guid: 2caeaac27f6f65c47a4715936da8c79e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2
@@ -26715,6 +26824,10 @@ PrefabInstance:
     - target: {fileID: 1967871191325503919, guid: e5182029b39d09443ac86306d2a8b6f3, type: 3}
       propertyPath: m_Name
       value: Wall_Brick (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1967871191325503919, guid: e5182029b39d09443ac86306d2a8b6f3, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -27734,6 +27847,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall_Plaster_Window (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6558102995472244298, guid: ab38d0edbf6f6ad4c8330a4f1cf16fd3, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -28728,6 +28845,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Props_City_Park_Fence_Column_02 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 8822813825365383170, guid: 14985dcf9ae902945b903f9c6001385e, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -28812,9 +28933,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2062585981}
     m_Modifications:
+    - target: {fileID: 62071465684774517, guid: 60890b6b67a000b47af2849fb13e0c77, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 6932255152293898434, guid: 60890b6b67a000b47af2849fb13e0c77, type: 3}
       propertyPath: m_Name
       value: SM_Props_Farm_Fence_Gate
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932255152293898434, guid: 60890b6b67a000b47af2849fb13e0c77, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 7746052792936641144, guid: 60890b6b67a000b47af2849fb13e0c77, type: 3}
       propertyPath: m_LocalPosition.x
@@ -31335,6 +31464,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall_Plaster (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 8508961707427148958, guid: 1276132a81daa99449cfc751ec9075c2, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 9033718632049864228, guid: 1276132a81daa99449cfc751ec9075c2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.1000004
@@ -31642,7 +31775,7 @@ GameObject:
   - component: {fileID: 1705091432}
   - component: {fileID: 1705091431}
   - component: {fileID: 1705091430}
-  m_Layer: 8
+  m_Layer: 13
   m_Name: Cube (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32070,6 +32203,10 @@ PrefabInstance:
     - target: {fileID: 1967871191325503919, guid: e5182029b39d09443ac86306d2a8b6f3, type: 3}
       propertyPath: m_Name
       value: Wall_Brick
+      objectReference: {fileID: 0}
+    - target: {fileID: 1967871191325503919, guid: e5182029b39d09443ac86306d2a8b6f3, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -33113,7 +33250,7 @@ GameObject:
   - component: {fileID: 1801133207}
   - component: {fileID: 1801133206}
   - component: {fileID: 1801133205}
-  m_Layer: 8
+  m_Layer: 13
   m_Name: Cube (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33500,6 +33637,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Props_City_Park_Fence
       objectReference: {fileID: 0}
+    - target: {fileID: 8779081136423069436, guid: 4dba5dcaae6f65641bcb3d83f66ffc24, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -33651,6 +33792,10 @@ PrefabInstance:
     - target: {fileID: 8508961707427148958, guid: 1276132a81daa99449cfc751ec9075c2, type: 3}
       propertyPath: m_Name
       value: Wall_Plaster (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8508961707427148958, guid: 1276132a81daa99449cfc751ec9075c2, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 9033718632049864228, guid: 1276132a81daa99449cfc751ec9075c2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -34617,6 +34762,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall_Tile
       objectReference: {fileID: 0}
+    - target: {fileID: 1967871191325503919, guid: c6a2fe8cc07f77541b745a079da111fe, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -34721,6 +34870,10 @@ PrefabInstance:
     - target: {fileID: 5167443354534652804, guid: 068c39885c2d26247924b8b07aa0c190, type: 3}
       propertyPath: m_Name
       value: SM_Props_Interior_Generic_Warehouse_Pallet
+      objectReference: {fileID: 0}
+    - target: {fileID: 5167443354534652804, guid: 068c39885c2d26247924b8b07aa0c190, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 5547769497148846398, guid: 068c39885c2d26247924b8b07aa0c190, type: 3}
       propertyPath: m_LocalPosition.x
@@ -36780,6 +36933,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall_Tile (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 1967871191325503919, guid: c6a2fe8cc07f77541b745a079da111fe, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -37205,7 +37362,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2062585981}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37848,7 +38005,7 @@ GameObject:
   - component: {fileID: 2124064412}
   - component: {fileID: 2124064411}
   - component: {fileID: 2124064410}
-  m_Layer: 8
+  m_Layer: 13
   m_Name: Cube (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37995,6 +38152,10 @@ PrefabInstance:
     - target: {fileID: 8822813825365383170, guid: 14985dcf9ae902945b903f9c6001385e, type: 3}
       propertyPath: m_Name
       value: SM_Props_City_Park_Fence_Column_02 (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8822813825365383170, guid: 14985dcf9ae902945b903f9c6001385e, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -38187,6 +38348,10 @@ PrefabInstance:
     - target: {fileID: 8779081136423069436, guid: 4dba5dcaae6f65641bcb3d83f66ffc24, type: 3}
       propertyPath: m_Name
       value: SM_Props_City_Park_Fence (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8779081136423069436, guid: 4dba5dcaae6f65641bcb3d83f66ffc24, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -38526,6 +38691,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall_Brick_Window
       objectReference: {fileID: 0}
+    - target: {fileID: 8076303311520287282, guid: 2caeaac27f6f65c47a4715936da8c79e, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 8889854695662293128, guid: 2caeaac27f6f65c47a4715936da8c79e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4
@@ -38634,6 +38803,10 @@ PrefabInstance:
     - target: {fileID: 6558102995472244298, guid: ab38d0edbf6f6ad4c8330a4f1cf16fd3, type: 3}
       propertyPath: m_Name
       value: Wall_Plaster_Window
+      objectReference: {fileID: 0}
+    - target: {fileID: 6558102995472244298, guid: ab38d0edbf6f6ad4c8330a4f1cf16fd3, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
