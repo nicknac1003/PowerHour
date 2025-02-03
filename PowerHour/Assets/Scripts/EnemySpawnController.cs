@@ -14,12 +14,14 @@ public class EnemySpawnController : MonoBehaviour
     private List<Transform> spawnPoints = new List<Transform>();
 
     private bool waveStarted;
+    public bool waveEnded;
     public List<GameObject> enemiesToSpawn = new List<GameObject>();
 
     public List<Wave> waves = new List<Wave>();
 
     public int currentWave = 0;
 
+    private Wave defaultWave = new Wave(20, 10, 2f);
     void Start()
     {
         //get all gameobjects with tag EnemySpawner
@@ -32,15 +34,17 @@ public class EnemySpawnController : MonoBehaviour
 
     void Update()
     {
-        //if spacebar pressed
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            startWave();
-        }
 
         if (waveStarted)
         {
-            Wave currWave = waves[currentWave];
+            Wave currWave;
+            if (currentWave >= waves.Count)
+            {
+                currWave = defaultWave;
+            } else 
+            {
+                currWave = waves[currentWave];
+            }
             if (currentEnemies < currWave.maxEnemies && Time.time - lastSpawnTime > currWave.spawnInterval)
             {
                 SpawnEnemy();
@@ -56,6 +60,7 @@ public class EnemySpawnController : MonoBehaviour
     public void startWave(){
         if (!waveStarted)
         {
+            waveEnded = false;
             waveStarted = true;
         }
     }
@@ -63,6 +68,7 @@ public class EnemySpawnController : MonoBehaviour
     public void endWave()
     {
         waveStarted = false;
+        waveEnded = true;
         currentWave++;
         generateWave();
     }
@@ -70,7 +76,9 @@ public class EnemySpawnController : MonoBehaviour
     public void generateWave()
     {
         int waveBudget = waves[currentWave].cost;
-        while (waveBudget > 0)
+        //get min cost in enemies
+        int minCost = enemies.Min(x => x.cost);
+        while (waveBudget >= minCost)
         {
             int enemyIndex = Random.Range(0, enemies.Count);
             if (enemies[enemyIndex].cost <= waveBudget)
@@ -98,7 +106,7 @@ public class EnemySpawnController : MonoBehaviour
         enemiesToSpawn.RemoveAt(0);
     }
 
-    public void RemoveEnemy(GameObject enemy)
+    public void RemoveEnemy()
     {
         currentEnemies--;
     }
@@ -117,4 +125,10 @@ public class Wave {
     public int maxEnemies;
     public float spawnInterval;
 
+    public Wave(int cost, int maxEnemies, float spawnInterval)
+    {
+        this.cost = cost;
+        this.maxEnemies = maxEnemies;
+        this.spawnInterval = spawnInterval;
+    }
 }

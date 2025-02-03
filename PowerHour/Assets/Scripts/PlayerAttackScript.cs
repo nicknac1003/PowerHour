@@ -8,7 +8,7 @@ public class PlayerAttackScript : MonoBehaviour
         Kick
     }
     public HitType hitType = HitType.Punch;
-    [SerializeField] private int damage = 10;
+    [SerializeField] private float damage = 10;
     private PlayerAnimationController playerAnimationController;
 
     private void Start()
@@ -32,5 +32,10 @@ public class PlayerAttackScript : MonoBehaviour
                 playerAnimationController.PlayKickHitSound();
             }
         }
+    }
+
+    public void increaseDamage(float amount)
+    {
+        damage += amount;
     }
 }

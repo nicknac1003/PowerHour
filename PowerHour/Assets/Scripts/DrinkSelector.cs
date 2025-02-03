@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 
 public class DrinkSelector : MonoBehaviour
@@ -8,7 +9,7 @@ public class DrinkSelector : MonoBehaviour
     [SerializeField] private List<ScriptableBuff> drinkList;
     public List<GameObject> drinkOptions = new List<GameObject>();
 
-
+    [SerializeField] private float buttonEnableDelay = 1.5f;
     void Start()
     {
         updateDrinks();
@@ -24,12 +25,15 @@ public class DrinkSelector : MonoBehaviour
             SelectDrink drinkComponent = drinkOptions[i].GetComponent<SelectDrink>();
             drinkComponent.drink = drink;
             drinkComponent.setAssets(drink.BuffName, drink.Icon);
+            drinkComponent.EnableButtonAfterDelay(buttonEnableDelay);
         }
     }
 
     public void showDrinks(){
         Debug.Log("Showing drinks");
+        updateDrinks();
         gameObject.SetActive(true);
+        
     }
     public void hideDrinks(){
         Debug.Log("Hiding drinks");
@@ -48,7 +52,5 @@ public class DrinkSelector : MonoBehaviour
         }
         return shuffledList.GetRange(0, n);
     }
-
-
 
 }

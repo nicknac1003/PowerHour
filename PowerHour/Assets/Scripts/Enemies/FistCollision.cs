@@ -3,7 +3,7 @@ using UnityEngine;
 public class FistCollision : MonoBehaviour
 {
     private MeleeGrunt enemyScript;
-    private int damage;
+    private int damage = 15;
 
     private void Start()
     {
@@ -24,6 +24,7 @@ public class FistCollision : MonoBehaviour
         if (other.gameObject.tag == "Player Hitbox")
         {
             other.gameObject.GetComponentInParent<PlayerAnimationController>().TakeDamage(damage);
+            other.gameObject.GetComponentInParent<PlayerController>().TakeDamage(damage);
         }
     }
 }
