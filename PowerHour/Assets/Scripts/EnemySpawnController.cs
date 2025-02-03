@@ -7,7 +7,7 @@ public class EnemySpawnController : MonoBehaviour
 
     public List<EnemyCost> enemies = new List<EnemyCost>();
 
-    private int currentEnemies = 0;
+    public int currentEnemies = 0;
     private float lastSpawnTime;
 
 
@@ -41,7 +41,8 @@ public class EnemySpawnController : MonoBehaviour
             if (currentWave >= waves.Count)
             {
                 currWave = defaultWave;
-            } else 
+            }
+            else
             {
                 currWave = waves[currentWave];
             }
@@ -57,7 +58,8 @@ public class EnemySpawnController : MonoBehaviour
         }
     }
 
-    public void startWave(){
+    public void startWave()
+    {
         if (!waveStarted)
         {
             waveEnded = false;
@@ -120,7 +122,8 @@ public class EnemyCost
 }
 
 [System.Serializable]
-public class Wave {
+public class Wave
+{
     public int cost;
     public int maxEnemies;
     public float spawnInterval;

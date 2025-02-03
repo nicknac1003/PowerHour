@@ -77,7 +77,6 @@ public class MeleeGrunt : Enemy
         {
             agent.SetDestination(this.transform.position);
             animator.SetBool("isWalking", false);
-            bool enterCombat = !animator.GetBool("inCombat");
             animator.SetBool("inCombat", true);
 
             this.transform.rotation = Quaternion.LookRotation(direction);

@@ -51,8 +51,20 @@ public class RangedGrunt : Enemy
     {
         holding = Instantiate(projectile, holdParent.transform.position, holdParent.transform.rotation);
         holding.transform.parent = holdParent.transform;
+        holding.GetComponent<Rigidbody>().isKinematic = true;
+        holding.GetComponent<Collider>().enabled = false;
         // holding.GetComponent<bottle>().holdPoint = holdParent.transform;
         // holding.GetComponent<Rigidbody>().useGravity = false;
+    }
+    public override void Die()
+    {
+        base.Die();
+        if (holding != null)
+        {
+            holding.transform.parent = null;
+            holding.GetComponent<Rigidbody>().isKinematic = false;
+            holding.GetComponent<Collider>().enabled = true;
+        }
     }
 
     public override void move()
@@ -112,6 +124,7 @@ public class RangedGrunt : Enemy
 
             holding.transform.parent = null;
             holding.GetComponent<Rigidbody>().isKinematic = false;
+            holding.GetComponent<Collider>().enabled = true;
             Vector3 targetThrow = target.transform.position;
             targetThrow.y += 1.25f;
             //draw point at targteThrow

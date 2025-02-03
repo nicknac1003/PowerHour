@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using TMPro;
 public class GameManager : MonoBehaviour
 {
     public GameObject player;
@@ -14,6 +16,9 @@ public class GameManager : MonoBehaviour
     public EnemySpawnController enemySpawnController;
 
     public DrinkSelector drinkSelector;
+    [SerializeField] private TextMeshProUGUI roundText;
+    [SerializeField] private TextMeshProUGUI enemyCountText;
+
 
     public void Start()
     {
@@ -22,11 +27,14 @@ public class GameManager : MonoBehaviour
         drinking = false;
         //call function after 5 seconds
         Invoke("StartWave", 5);
+        roundText.text = "Round: " + (currentWave + 1);
+        enemyCountText.text = "Enemies Remaining: " + enemySpawnController.enemiesToSpawn.Count;
+
     }
 
     public void Update()
     {
-        if (enemySpawnController.waveEnded) 
+        if (enemySpawnController.waveEnded)
         {
             waveStarted = false;
             if (!drinking)
@@ -42,12 +50,15 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
 
+        roundText.text = "Round: " + (currentWave + 1);
+        enemyCountText.text = "Enemies Remaining: " + (enemySpawnController.enemiesToSpawn.Count + enemySpawnController.currentEnemies);
+
     }
     public void EndDrinking()
     {
         drinkSelector.hideDrinks();
         StartWave();
-        
+
     }
 
     public void StartWave()

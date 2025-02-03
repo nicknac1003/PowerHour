@@ -12,6 +12,7 @@ TagManager:
   - EnemySpawnLocation
   - Punch
   - Kick
+  - jukebox
   layers:
   - Default
   - TransparentFX
