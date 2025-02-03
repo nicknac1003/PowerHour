@@ -12422,6 +12422,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -493.01984
       objectReference: {fileID: 0}
+    - target: {fileID: 9187363470836925950, guid: 020b831f7ff2f974e85a84996f5f15e0, type: 3}
+      propertyPath: drinkList.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9187363470836925950, guid: 020b831f7ff2f974e85a84996f5f15e0, type: 3}
+      propertyPath: 'drinkList.Array.data[4]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 841ee2ed814b1b1428bf7f993fdf255b, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -25336,9 +25344,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 115899933144144823, guid: aa2f210b5a72b4f49837ee023353a5c2, type: 3}
+      propertyPath: damage
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1535059269287794238, guid: aa2f210b5a72b4f49837ee023353a5c2, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2959959596539350344, guid: aa2f210b5a72b4f49837ee023353a5c2, type: 3}
+      propertyPath: damage
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3279805710017335283, guid: aa2f210b5a72b4f49837ee023353a5c2, type: 3}
+      propertyPath: damage
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 5801244469858383123, guid: aa2f210b5a72b4f49837ee023353a5c2, type: 3}
       propertyPath: crosshair
