@@ -37,13 +37,13 @@ public class EnemySpawnController : MonoBehaviour
 
         if (waveStarted)
         {
-            Wave currentWave;
+            Wave currWave;
             if (currentWave >= waves.Count)
             {
-                currentWave = defaultWave;
+                currWave = defaultWave;
             } else 
             {
-                currentWave = waves[currentWave];
+                currWave = waves[currentWave];
             }
             if (currentEnemies < currWave.maxEnemies && Time.time - lastSpawnTime > currWave.spawnInterval)
             {
