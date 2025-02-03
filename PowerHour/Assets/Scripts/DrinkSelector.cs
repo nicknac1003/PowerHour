@@ -25,7 +25,7 @@ public class DrinkSelector : MonoBehaviour
             SelectDrink drinkComponent = drinkOptions[i].GetComponent<SelectDrink>();
             drinkComponent.drink = drink;
             drinkComponent.setAssets(drink.BuffName, drink.Icon);
-            drinkComponent.EnableButtonAfterDelay(buttonEnableDelay);
+            
         }
     }
 
@@ -33,6 +33,10 @@ public class DrinkSelector : MonoBehaviour
         Debug.Log("Showing drinks");
         updateDrinks();
         gameObject.SetActive(true);
+        foreach (GameObject drink in drinkOptions)
+        {
+            drink.GetComponent<SelectDrink>().EnableButtonAfterDelay(buttonEnableDelay);
+        }
         
     }
     public void hideDrinks(){

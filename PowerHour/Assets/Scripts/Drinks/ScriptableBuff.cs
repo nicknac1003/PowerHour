@@ -29,10 +29,7 @@ public abstract class ScriptableBuff : ScriptableObject
 
     public string GetFormattedDescription()
     {
-        Debug.Log("buh");
         string formattedDescription = Description;
-        Debug.Log("Arguments: " + Arguments);
-        Debug.Log("Description: " + Description);
         foreach (var arg in Arguments)
         {
             FieldInfo field = GetType().GetField(arg);

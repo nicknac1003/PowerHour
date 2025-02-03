@@ -15533,6 +15533,18 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1375429811}
+    - target: {fileID: 733666282768538635, guid: 020b831f7ff2f974e85a84996f5f15e0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1586279893}
+    - target: {fileID: 733666282768538635, guid: 020b831f7ff2f974e85a84996f5f15e0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: EndDrinking
+      objectReference: {fileID: 0}
+    - target: {fileID: 733666282768538635, guid: 020b831f7ff2f974e85a84996f5f15e0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: GameManager, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 1658579797097585918, guid: 020b831f7ff2f974e85a84996f5f15e0, type: 3}
       propertyPath: button
       value: 
@@ -15581,6 +15593,18 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1375429811}
+    - target: {fileID: 3669959571482087849, guid: 020b831f7ff2f974e85a84996f5f15e0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1586279893}
+    - target: {fileID: 3669959571482087849, guid: 020b831f7ff2f974e85a84996f5f15e0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: EndDrinking
+      objectReference: {fileID: 0}
+    - target: {fileID: 3669959571482087849, guid: 020b831f7ff2f974e85a84996f5f15e0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: GameManager, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 6269066796291531616, guid: 020b831f7ff2f974e85a84996f5f15e0, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -15712,6 +15736,18 @@ PrefabInstance:
     - target: {fileID: 8145682699839320552, guid: 020b831f7ff2f974e85a84996f5f15e0, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -493.01984
+      objectReference: {fileID: 0}
+    - target: {fileID: 8900636268464651212, guid: 020b831f7ff2f974e85a84996f5f15e0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1586279893}
+    - target: {fileID: 8900636268464651212, guid: 020b831f7ff2f974e85a84996f5f15e0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: EndDrinking
+      objectReference: {fileID: 0}
+    - target: {fileID: 8900636268464651212, guid: 020b831f7ff2f974e85a84996f5f15e0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: GameManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 9187363470836925950, guid: 020b831f7ff2f974e85a84996f5f15e0, type: 3}
       propertyPath: drinkList.Array.size
@@ -32677,7 +32713,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.1
+  m_Volume: 0.08
   m_Pitch: 1
   Loop: 0
   Mute: 0
