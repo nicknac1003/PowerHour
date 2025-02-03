@@ -52,6 +52,8 @@ public class Enemy : MonoBehaviour, IDamageable
     private List<Rigidbody> rigidbodies = new List<Rigidbody>();
     [SerializeField] private Collider hitbox;
 
+    [SerializeField] private EnemySpawnController EnemySpawnController;
+
     public virtual void attack()
     {
         return;
@@ -99,6 +101,7 @@ public class Enemy : MonoBehaviour, IDamageable
     public void Start()
     {
         mainCamera = Camera.main;
+        EnemySpawnController = GameObject.Find("EnemySpawnerController").GetComponent<EnemySpawnController>();
         if (healthBarUI != null)
         {
             healthBar.value = 1;
@@ -153,6 +156,7 @@ public class Enemy : MonoBehaviour, IDamageable
         Destroy(healthBarUI);
         Destroy(hitbox);
         Destroy(this);
+        EnemySpawnController.RemoveEnemy();
     }
 
     public void TakeDamage(float damage)

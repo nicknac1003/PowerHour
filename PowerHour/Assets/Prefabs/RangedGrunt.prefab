@@ -1295,13 +1295,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c8eecf8089192e4baf8638687932cf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseSpeed: 3
-  speed: 3
+  baseSpeed: 2
+  speed: 2
   range: 4.5
   id: 
   target: {fileID: 1535059269287794238, guid: aa2f210b5a72b4f49837ee023353a5c2, type: 3}
   hitDelay: 0.1
-  attackDelay: 2
+  attackDelay: 3
   healthBarUI: {fileID: 540023822305288099}
   healthBar: {fileID: 2347961935652980942}
   hitbox: {fileID: 4368090331449873296}

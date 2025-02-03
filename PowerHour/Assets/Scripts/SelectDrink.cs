@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections;
 class SelectDrink : MonoBehaviour
 {
     public PlayerController player;
@@ -9,6 +10,8 @@ class SelectDrink : MonoBehaviour
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI descriptionText;
     public RawImage icon;
+
+    public Button button;
 
     public void ApplyDrink()
     {
@@ -22,5 +25,17 @@ class SelectDrink : MonoBehaviour
         descriptionText.text = drink.GetFormattedDescription();
         icon.texture = img;
 
+    }
+
+    public void EnableButtonAfterDelay(float delay)
+    {
+        StartCoroutine(EnableButtonCoroutine(delay));
+    }
+
+    private IEnumerator EnableButtonCoroutine(float delay)
+    {
+        button.interactable = false;
+        yield return new WaitForSeconds(delay);
+        button.interactable = true;
     }
 }
