@@ -59,10 +59,12 @@ public class GameManager : MonoBehaviour
         drinkSelector.hideDrinks();
         StartWave();
 
+
     }
 
     public void StartWave()
     {
+        Debug.Log("Wave Started " +waveStarted);
         if (!waveStarted)
         {
             Debug.Log("Starting wave");

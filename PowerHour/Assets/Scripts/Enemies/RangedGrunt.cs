@@ -109,14 +109,12 @@ public class RangedGrunt : Enemy
 
     private bool WillThrowAtWall()
     {
-        // if no wall in between, return false
-        RaycastHit hit;
+        Vector3 throwPosition = holdParent.transform.position;
+        Vector3 playerPosition = target.transform.position;
+        throwPosition.y = 2;
+        playerPosition.y = 2; // hard code to 2 so half walls are not in the way
 
-        if (Physics.Raycast(holdParent.transform.position, target.transform.position - holdParent.transform.position, out hit, range, LayerMask.GetMask("Wall")))
-        {
-            return true;
-        }
-        return false;
+        return Physics.Raycast(throwPosition, playerPosition - throwPosition, range, LayerMask.GetMask("Wall"));
     }
 
     public void release()
