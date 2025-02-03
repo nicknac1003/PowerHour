@@ -17,7 +17,7 @@ MonoBehaviour:
   IsDurationStacked: 0
   IsEffectStacked: 1
   BuffName: Tequila
-  Icon: {fileID: 2800000, guid: 763d6b2c4ac592b42aa505ece003c346, type: 3}
+  Icon: {fileID: 2800000, guid: 091a73ffe0d5e9a46a66b52904bb946e, type: 3}
   Description: Increase DMG by {DamageIncrease}
   Arguments:
   - DamageIncrease
