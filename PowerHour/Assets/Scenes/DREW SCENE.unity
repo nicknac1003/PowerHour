@@ -1070,7 +1070,7 @@ GameObject:
   m_Component:
   - component: {fileID: 49035288}
   - component: {fileID: 49035289}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: ClipBox (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5003,7 +5003,7 @@ GameObject:
   m_Component:
   - component: {fileID: 220254889}
   - component: {fileID: 220254890}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: ClipBox (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5416,7 +5416,7 @@ GameObject:
   m_Component:
   - component: {fileID: 240448895}
   - component: {fileID: 240448896}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: ClipBox (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6618,7 +6618,7 @@ GameObject:
   m_Component:
   - component: {fileID: 283318653}
   - component: {fileID: 283318654}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: ClipBox (18)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9099,7 +9099,7 @@ GameObject:
   m_Component:
   - component: {fileID: 391048434}
   - component: {fileID: 391048435}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: ClipBox (24)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9162,7 +9162,7 @@ GameObject:
   m_Component:
   - component: {fileID: 407066867}
   - component: {fileID: 407066868}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: ClipBox (29)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12542,7 +12542,7 @@ GameObject:
   m_Component:
   - component: {fileID: 530131905}
   - component: {fileID: 530131906}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Jukebox Clip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15358,7 +15358,7 @@ GameObject:
   m_Component:
   - component: {fileID: 626840428}
   - component: {fileID: 626840429}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: ClipBox (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15411,7 +15411,7 @@ GameObject:
   m_Component:
   - component: {fileID: 633457740}
   - component: {fileID: 633457741}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: ClipBox (16)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16311,7 +16311,7 @@ GameObject:
   m_Component:
   - component: {fileID: 660130999}
   - component: {fileID: 660131000}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: ClipBox (19)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16364,7 +16364,7 @@ GameObject:
   m_Component:
   - component: {fileID: 661333118}
   - component: {fileID: 661333119}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: ClipBox (21)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16964,7 +16964,7 @@ GameObject:
   m_Component:
   - component: {fileID: 699299813}
   - component: {fileID: 699299814}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: ClipBox (26)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17146,7 +17146,7 @@ GameObject:
   m_Component:
   - component: {fileID: 711175661}
   - component: {fileID: 711175662}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: ClipBox (27)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17597,7 +17597,7 @@ GameObject:
   m_Component:
   - component: {fileID: 725272332}
   - component: {fileID: 725272333}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: ClipBox (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19145,7 +19145,7 @@ GameObject:
   m_Component:
   - component: {fileID: 777663561}
   - component: {fileID: 777663562}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: ClipBox (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19771,7 +19771,7 @@ GameObject:
   m_Component:
   - component: {fileID: 811113894}
   - component: {fileID: 811113895}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: ClipBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22304,7 +22304,7 @@ GameObject:
   m_Component:
   - component: {fileID: 931087246}
   - component: {fileID: 931087247}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: ClipBox (32)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22357,7 +22357,7 @@ GameObject:
   m_Component:
   - component: {fileID: 933875572}
   - component: {fileID: 933875573}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: ClipBox (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25030,8 +25030,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 50, y: 0.1, z: 50}
-  m_Center: {x: 0, y: -0.05, z: 0}
+  m_Size: {x: 100, y: 10, z: 100}
+  m_Center: {x: 0, y: -5, z: 0}
 --- !u!4 &1046108059 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0b3edcb6569b53347af2c53ec5c71ea9, type: 3}
@@ -26147,7 +26147,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1105753259}
   - component: {fileID: 1105753260}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: ClipBox (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27750,7 +27750,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1151179066}
   - component: {fileID: 1151179067}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: ClipBox (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28517,7 +28517,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1192335810}
   - component: {fileID: 1192335811}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: ClipBox (20)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29450,7 +29450,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1247169454}
   - component: {fileID: 1247169455}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: ClipBox (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29933,7 +29933,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1287475248}
   - component: {fileID: 1287475249}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: ClipBox (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29991,7 +29991,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1292215267}
   - component: {fileID: 1292215268}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: ClipBox (25)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30475,7 +30475,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1314045396}
   - component: {fileID: 1314045397}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: ClipBox (30)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33567,7 +33567,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1424385298}
   - component: {fileID: 1424385299}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: ClipBox (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34301,7 +34301,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1441596253}
   - component: {fileID: 1441596254}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: ClipBox (28)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34610,7 +34610,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1445529092}
   - component: {fileID: 1445529093}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: ClipBox (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35143,7 +35143,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1463116101}
   - component: {fileID: 1463116102}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: ClipBox (31)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35570,7 +35570,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1475454120}
   - component: {fileID: 1475454121}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: ClipBox (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43514,7 +43514,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1851105234}
   - component: {fileID: 1851105235}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: ClipBox (17)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43791,7 +43791,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1858503006}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Full Clips - Walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44560,7 +44560,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1892661573}
   - component: {fileID: 1892661574}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: ClipBox (22)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45661,7 +45661,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1925835560}
   - component: {fileID: 1925835561}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: ClipBox (23)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48861,7 +48861,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2133283514}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Half Clips - Short Walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
